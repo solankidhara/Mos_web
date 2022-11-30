@@ -1,5 +1,4 @@
-import './App.css';
-import RouteSelector from './Routes/Router';
+import RouteSelector from './Routes/RouteSelector';
 
 function App() {
       return (
