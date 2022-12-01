@@ -1,14 +1,21 @@
 .bg {
       background-image: url(../../../public/images/SignInBG.png);
       background-size: cover;
-      height: 100vh;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
 }
 
-.mt {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+@media (min-height: 300px) and (max-height: 575px) {
+      .bg {
+            flex-direction: column !important;
+      }
+      .legal {
+            position: static !important;
+      }
 }
 
 .title {

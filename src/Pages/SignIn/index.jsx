@@ -9,54 +9,52 @@ import classes from './index.module.css';
 const LoginPage = () => {
       return (
             <div className={'container-fluid ' + classes.bg}>
-                  <div className={classes.mt}>
-                        <div className={classes.cardcontainer}>
-                              <PublicCard>
-                                    <div className={classes.title}>Sign in</div>
-                                    <Form>
-                                          <UserInput
-                                                type="email"
-                                                placeholder="Email Address"
-                                                name="email"
-                                                bs-class="mt-4"
-                                          />
-                                          <UserInput
-                                                type="password"
-                                                placeholder="Passcode"
-                                                name="password"
-                                                bs-class="my-4"
-                                          />
-                                          <div
-                                                className={
-                                                      'd-flex flex-wrap align-items-center justify-content-center justify-content-sm-start ' +
-                                                      classes.sub
-                                                }
+                  <div className={classes.cardcontainer}>
+                        <PublicCard>
+                              <div className={classes.title}>Sign in</div>
+                              <Form>
+                                    <UserInput
+                                          type="email"
+                                          placeholder="Email Address"
+                                          name="email"
+                                          bs-class="mt-4"
+                                    />
+                                    <UserInput
+                                          type="password"
+                                          placeholder="Passcode"
+                                          name="password"
+                                          bs-class="my-4"
+                                    />
+                                    <div
+                                          className={
+                                                'd-flex flex-wrap align-items-center justify-content-center justify-content-sm-start ' +
+                                                classes.sub
+                                          }
+                                    >
+                                          <UserButton type="submit" bs-class="">
+                                                Sign In
+                                          </UserButton>
+                                          <Link
+                                                to="/signup"
+                                                className={'ms-sm-5 my-3 my-sm-0 ' + classes.link}
                                           >
-                                                <UserButton type="submit" bs-class="">
-                                                      Sign In
-                                                </UserButton>
-                                                <Link
-                                                      to="/signup"
-                                                      className={
-                                                            'ms-sm-5 my-3 my-sm-0 ' + classes.link
-                                                      }
-                                                >
-                                                      Create an Account
-                                                </Link>
-                                          </div>
-                                          <div className={classes.spacing}>
-                                                <Option icon="Google" bs-class="my-3">
-                                                      Sign in with Google
-                                                </Option>
-                                                <Option icon="Apple" bs-class="my-3">
-                                                      &nbsp;&nbsp;Sign in with Apple
-                                                </Option>
-                                          </div>
-                                    </Form>
-                              </PublicCard>
-                        </div>
-                        <span className={classes.legal}>Privacy Policy | Team of Use | Licensing Terms</span>
+                                                Create an Account
+                                          </Link>
+                                    </div>
+                                    <div className={classes.spacing}>
+                                          <Option icon="Google" bs-class="my-3">
+                                                Sign in with Google
+                                          </Option>
+                                          <Option icon="Apple" bs-class="my-3">
+                                                &nbsp;&nbsp;Sign in with Apple
+                                          </Option>
+                                    </div>
+                              </Form>
+                        </PublicCard>
                   </div>
+                  <span className={classes.legal}>
+                        Privacy Policy | Team of Use | Licensing Terms
+                  </span>
             </div>
       );
 };
