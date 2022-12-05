@@ -1,0 +1,42 @@
+.container {
+      height: 443px;
+      background-color: black;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-evenly;
+      padding: 10vh 0;
+}
+
+.buttons {
+      margin-top: 15px;
+
+      display: flex;
+      flex-direction: column;
+}
+
+.icons button {
+      margin: 0 6px;
+}
+
+.buttons select {
+      outline: none;
+      width: 169px;
+      height: 30px;
+
+      color: white;
+      background-color: #d9d9d9;
+      border-radius: 5px;
+
+      margin: 18px 6px 18px auto;
+      padding: 0 22px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+}
+
+@media screen and (max-width: 830px) {
+      .container { height: auto;}
+      .lists {
+            margin: 20px 20px;
+      }
+}

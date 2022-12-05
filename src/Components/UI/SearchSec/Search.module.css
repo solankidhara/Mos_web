@@ -1,0 +1,14 @@
+.browse-sec {
+      position: relative;
+      overflow: hidden;
+}
+
+.browse-sec img {
+      object-fit: cover;
+}
+
+@media screen and (max-width: 750px) {
+      .browse-sec img {
+            height: 100%;
+      }
+}
