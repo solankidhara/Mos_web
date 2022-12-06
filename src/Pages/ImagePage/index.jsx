@@ -2,7 +2,7 @@ import badges from '../../Components/constance/image-badges';
 import trendingVideo from '../../Components/constance/trending-video-image';
 import CategoryBrowser from '../../Components/UI/CategoryBrowser/CategoryBrowser';
 import NavBar from '../../Components/UI/NavBar/NavBar';
-import Search from '../../Components/UI/SearchSec/Search';
+import SearchMenu from '../../Components/UI/SearchSec/Search';
 import Photos from '../../Components/UI/Photos/Photos';
 import trendingPhotos from '../../Components/constance/trending-photos';
 import royaltyFreeImage from '../../Components/constance/royaltyFreeImage';
@@ -16,12 +16,13 @@ const About = () => {
       return (
             <div className="g-0 container-fluid">
                   <NavBar menu={links} />
-                  <Search
+                  <SearchMenu
                         bs-class-controls="mt-5"
                         name="image"
                         placeholder="search for image"
                         selected="image"
                         path="./images/IndexBG.png"
+                        alt='image page background'
                         options={links}
                   />
                   <CategoryBrowser bs-class="mt-5" categories={trendingVideo}>

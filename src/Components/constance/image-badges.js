@@ -7,7 +7,6 @@ const badges = [
       { name: 'mechanical'},
       { name: 'love'},
       { name: 'vector'},
-      { name: 'vector'},
       { name: 'interior'},
       { name: 'food'},
       { name: 'all'},

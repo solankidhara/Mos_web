@@ -1,0 +1,11 @@
+.results {
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      margin: 0.5rem !important;
+}
+
+@media screen and (min-width: 991px) {
+      .tags {
+            max-width: 73% !important;
+      }
+}

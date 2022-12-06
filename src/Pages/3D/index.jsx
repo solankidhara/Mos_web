@@ -8,18 +8,19 @@ import FooterBar from '../../Components/UI/FooterBar/FooterBar';
 import NavBar from '../../Components/UI/NavBar/NavBar';
 import PlanPrompt from '../../Components/UI/Plans/PlansPrompt';
 import PromoContent from '../../Components/UI/PromoContent/PromoContent';
-import Search from '../../Components/UI/SearchSec/Search';
+import SearchMenu from '../../Components/UI/SearchSec/Search';
 
 const Page3D = () => {
       return (
             <div className="g-0 container-fluid">
                   <NavBar menu={links} />
-                  <Search
+                  <SearchMenu
                         bs-class-controls="mt-5"
-                        name="image"
-                        placeholder="search for image"
+                        name="3d"
+                        placeholder="search for 3D"
                         selected="3d"
                         path="./images/3dBGCrop.png"
+                        alt='3D-page background'
                         options={links}
                   />
                   <PromoCard>

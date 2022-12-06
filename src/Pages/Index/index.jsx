@@ -2,7 +2,7 @@ import PromoCard from '../../Components/Cards/PromoCard';
 import HighlightImages from '../../Components/UI/HighlightImages/HighlightImages';
 import NavBar from '../../Components/UI/NavBar/NavBar';
 import PromoContent from '../../Components/UI/PromoContent/PromoContent';
-import Search from '../../Components/UI/SearchSec/Search';
+import SearchMenu from '../../Components/UI/SearchSec/Search';
 import hilights from '../../Components/constance/hilights';
 import CategoryBrowser from '../../Components/UI/CategoryBrowser/CategoryBrowser';
 import trendingVideo from '../../Components/constance/trending-video-index';
@@ -13,11 +13,12 @@ const HomePage = () => {
       return (
             <div className="g-0 container-fluid">
                   <NavBar menu={links} />
-                  <Search
+                  <SearchMenu
                         name="video"
                         placeholder="search for video footage"
                         selected="video"
                         path="./images/IndexBG.png"
+                        alt='home page background'
                         options={links}
                         index
                   />
@@ -33,7 +34,7 @@ const HomePage = () => {
                         Browse trending video category
                   </CategoryBrowser>
                   <IndexFooter
-                        imgPath="./images/index-footer.png"
+                        imgPath="./images/IndexFooter.png"
                         title="Discover royalty free video footage, images, vector and illustration"
                   >
                         Sample text Sample text Sample text Sample text Sample text Sample text
