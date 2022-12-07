@@ -1,0 +1,23 @@
+.preview {
+      margin-top: 128px;
+}
+
+.tags {
+      max-width: 72%;
+      margin: 52px auto 40px;
+}
+.tags label {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 28px;
+}
+
+.related {
+      max-width: 72%;
+      margin: 37px auto 40px;
+}
+.related label {
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 28px;
+}

@@ -5,19 +5,24 @@ import classes from './FooterBar.module.css';
 const FooterBar = (props) => {
       return (
             <div className={classes.container}>
-                  {props.lists.map((list, ind) => (
-                        <div className={classes.lists} key={list.title + ind}>
+                  {props.lists.map((list, index) => (
+                        <div className={classes.lists} key={list.title + index}>
                               <FooterList list={list} />
                         </div>
                   ))}
-                  <div className={classes.buttons}>
+                  <div
+                        className={
+                              'flex-md-column align-items-center ' +
+                              classes.buttons
+                        }
+                  >
                         <div className={classes.icons}>
-                              {props.social.map((sm, ind) => (
-                                    <IconButton key={sm + ind} type="button"></IconButton>
+                              {props.social.map((sm, index) => (
+                                    <IconButton key={sm + index} type="button"></IconButton>
                               ))}
                         </div>
-                        <select defaultValue='language'>
-                              <option value='language'>Language</option>
+                        <select defaultValue="language">
+                              <option value="language">Language</option>
                         </select>
                   </div>
             </div>

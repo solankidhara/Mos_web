@@ -7,9 +7,9 @@ const CategoryBrowser = (props) => {
             <Container className={props['bs-class']}>
                   <span className={'ms-lg-5 ' + classes['trending-title']}>{props.children}</span>
                   <div className="d-flex flex-wrap justify-content-center">
-                        {props.categories.map((cat, ind) => (
+                        {props.categories.map((cat, index) => (
                               <CategoryImage
-                                    key={ind + cat.title}
+                                    key={index + cat.title}
                                     title={cat.title}
                                     thumbnail={cat.thumbnail}
                               />

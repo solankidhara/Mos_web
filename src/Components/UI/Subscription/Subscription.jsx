@@ -13,7 +13,7 @@ const Subscription = (props) => {
                   <Row className="g-0 py-4 text-center">
                         <div className={'h3 ' + classes.heading}>Pricing</div>
                   </Row>
-                  <Pricing bs-class="table-responsive overflow-hidden">
+                  <Pricing bs-class="table-responsive">
                         <Row>
                               <PeriodButton onClick={setActive} active={active} />
                         </Row>

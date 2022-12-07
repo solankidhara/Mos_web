@@ -8,12 +8,12 @@ const BadgeList = (props) => {
 
       return (
             <div>
-                  {props.badges.map((badge, ind) => (
+                  {props.badges.map((badge, index) => (
                         <Badge
                               pill
                               as="button"
                               className={classes.badges}
-                              key={badge.name + ind}
+                              key={badge.name + index}
                               bg="none"
                               onClick={handleBadgeClick}
                         >

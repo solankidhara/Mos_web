@@ -15,8 +15,8 @@ const SearchResultsDisplay = (props) => {
                         <BadgeList badges={badges} onClick={handleGetBadge} />
                   </Container>
                   <div className="py-4 px-3 d-flex justify-content-center flex-wrap">
-                        {props.pages.map((img) => (
-                              <div className={classes.results}>
+                        {props.pages.map((img, index) => (
+                              <div key={index} className={classes.results}>
                                     <img className="img-fluid" src={img.path} alt="search result" />
                               </div>
                         ))}

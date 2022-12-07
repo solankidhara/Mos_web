@@ -26,7 +26,7 @@ const PriceTable = (props) => {
                         </th>
                   </tr>
                   {props.packages
-                        .filter((pack, ind) => ind !== 0 && pack)
+                        .filter((pack, index) => index !== 0 && pack)
                         .map((pack) => (
                               <tr className={classes.data}>
                                     <td>{pack.for}</td>

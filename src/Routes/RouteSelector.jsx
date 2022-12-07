@@ -21,6 +21,7 @@ function RouteSelector() {
                   <Route element={<PrivateRoute login={isLogged} />}>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/home" element={<HomePage />} />
+                        <Route path="/video" element={<HomePage />} />
                         <Route path="/image" element={<Image />} />
                         <Route path="/3d" element={<Page3D />} />
                         <Route path="/policies" element={<Policies />} />

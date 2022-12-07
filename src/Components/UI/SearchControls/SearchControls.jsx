@@ -5,9 +5,12 @@ const SearchControls = (props) => {
       return (
             <div className={props['bs-class'] + ' ' + classes['browse-controls']}>
                   <select className="text-center" defaultValue={props.selected}>
-                        {props.options.map((option, ind) => (
-                              <option key={ind} value={option.toLowerCase().replace(/\s/g, '')}>
-                                    {option}
+                        {props.options.map((option, index) => (
+                              <option
+                                    key={index}
+                                    value={option.name.toLowerCase().replace(/\s/g, '')}
+                              >
+                                    {option.name}
                               </option>
                         ))}
                   </select>
