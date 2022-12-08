@@ -7,7 +7,7 @@ const PeriodButton = (props) => {
                   <Button
                         className={props.active ? classes.active : classes.passive}
                         onClick={() => {
-                              props.onClick(true);
+                              props.onClick('Monthly');
                         }}
                   >
                         Monthly
@@ -15,7 +15,7 @@ const PeriodButton = (props) => {
                   <Button
                         className={!props.active ? classes.active : classes.passive}
                         onClick={() => {
-                              props.onClick(false);
+                              props.onClick('Yearly');
                         }}
                   >
                         Yearly

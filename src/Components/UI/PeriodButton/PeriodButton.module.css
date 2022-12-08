@@ -5,7 +5,7 @@
       background-color: black;
       padding: 6px !important;
       margin: 0 auto;
-
+      margin-bottom: 25px;
       display: flex;
       align-items: center;
 }
@@ -34,4 +34,9 @@
       outline: none !important;
       color: white !important;
       text-align: center;
+}
+
+
+@media screen and (max-width: 768px) {
+      .my{margin-bottom: 30px;}
 }

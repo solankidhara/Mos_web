@@ -16,6 +16,14 @@
 .browse-controls > * {
       margin: 0 3.5px;
 }
+
+.browse-controls select:focus{
+      color: #212529 !important;
+      background-color: #fff !important;
+      border: 1px solid  #86b7fe !important;
+      outline: 0 !important;
+}
+
 .browse-controls select {
       -webkit-appearance: none;
       -moz-appearance: none;
@@ -29,6 +37,7 @@
       direction: rtl;
       outline: none;
       background-color: #d9d9d9;
+      border: 1px solid #d9d9d9;
 }
 
 .browse-controls::after {

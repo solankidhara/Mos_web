@@ -7,6 +7,14 @@ import classes from './Subscription.module.css';
 
 const Subscription = (props) => {
       const [active, setActive] = useState(true);
+      
+      const planHandler = (type) => {
+            if(type === 'Monthly'){
+                  setActive(true)
+            } else {
+                  setActive(false)
+            }
+      }
 
       return (
             <Fragment>
@@ -15,9 +23,9 @@ const Subscription = (props) => {
                   </Row>
                   <Pricing bs-class="table-responsive">
                         <Row>
-                              <PeriodButton onClick={setActive} active={active} />
+                              <PeriodButton onClick={planHandler} active={active} />
                         </Row>
-                        <PriceTable packages={props.packages} />
+                        <PriceTable packages={active ? props.packages.monthly : props.packages.yearly } active={active} />
                   </Pricing>
             </Fragment>
       );

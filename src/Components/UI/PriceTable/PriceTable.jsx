@@ -5,31 +5,135 @@ const PriceTable = (props) => {
       return (
             <table className={'table ' + classes.tbl}>
                   <tr>
-                        <th></th>
-                        <th className={'text-center ' + classes.title}>Starter</th>
-                        <th className={'text-center ' + classes.title}>Premium</th>
-                        <th className={'text-center ' + classes.title}>Corporate</th>
+                        <th className="d-none d-md-block">
+                              <div className={'text-center ' + classes.forRow}>
+                                    <table className="w-100">
+                                          {props.packages
+                                                .filter((pack, index) => index !== 0 && pack)
+                                                .map((pack) => (
+                                                      <tr className={classes.data}>
+                                                            <td className="d-none d-md-block">
+                                                                  {pack.for}
+                                                            </td>
+                                                      </tr>
+                                                ))}
+                                    </table>
+                              </div>
+                        </th>
+                        <th>
+                              <div className={'text-center ' + classes.title}>Starter</div>
+                              <div className={'text-center ' + classes.price}>
+                                    <h4>{props.packages[0].starter}</h4>
+                                    <span>user/{props.active ? 'month' : 'year'}</span>
+                              </div>
+                              <div className="text-center">
+                                    <table className="w-100">
+                                          {props.packages
+                                                .filter((pack, index) => index !== 0 && pack)
+                                                .map((pack) => (
+                                                      <tr className={classes.data}>
+                                                            <td className="text-center">
+                                                                  <span className="d-inline-block d-md-none">
+                                                                        <b>{pack.for} : </b>
+                                                                  </span>
+                                                                  {String(pack.starter).padStart(
+                                                                        2,
+                                                                        '0'
+                                                                  ) + ' / daily'}
+                                                            </td>
+                                                      </tr>
+                                                ))}
+                                          <tr>
+                                                <td className="text-center">
+                                                      <Button
+                                                            variant="dark"
+                                                            className={classes.btn}
+                                                      >
+                                                            Start now
+                                                      </Button>
+                                                </td>
+                                          </tr>
+                                    </table>
+                              </div>
+                        </th>
+                        <th>
+                              <div className={'text-center ' + classes.title}>Premium</div>
+                              <div className={'text-center ' + classes.price}>
+                                    <h4>{props.packages[0].premium}</h4>
+                                    <span>user/{props.active ? 'month' : 'year'}</span>
+                              </div>
+                              <div className="text-center">
+                                    <table className="w-100">
+                                          {props.packages
+                                                .filter((pack, index) => index !== 0 && pack)
+                                                .map((pack) => (
+                                                      <tr className={classes.data}>
+                                                            <td className="text-center">
+                                                                  <span className="d-inline-block d-md-none">
+                                                                        <b>{pack.for} : </b>
+                                                                  </span>
+                                                                  {String(pack.premium).padStart(
+                                                                        2,
+                                                                        '0'
+                                                                  ) + ' / daily'}
+                                                            </td>
+                                                      </tr>
+                                                ))}
+                                          <tr>
+                                                <td className="text-center">
+                                                      <Button
+                                                            variant="dark"
+                                                            className={classes.btn}
+                                                      >
+                                                            Start now
+                                                      </Button>
+                                                </td>
+                                          </tr>
+                                    </table>
+                              </div>
+                        </th>
+                        <th>
+                              <div className={'text-center ' + classes.title}>Corporate</div>
+                              <div className={'text-center ' + classes.price}>
+                                    <h4>{props.packages[0].corporate}</h4>
+                                    <span>user/{props.active ? 'month' : 'year'}</span>
+                              </div>
+                              <div className="text-center">
+                                    <table className="w-100">
+                                          {props.packages
+                                                .filter((pack, index) => index !== 0 && pack)
+                                                .map((pack) => (
+                                                      <tr className={classes.data}>
+                                                            <td className="text-center">
+                                                                  <span className="d-inline-block d-md-none">
+                                                                        <b>{pack.for} : </b>
+                                                                  </span>
+                                                                  {String(pack.corporate).padStart(
+                                                                        2,
+                                                                        '0'
+                                                                  ) + ' / daily'}
+                                                            </td>
+                                                      </tr>
+                                                ))}
+                                          <tr>
+                                                <td className="text-center">
+                                                      <Button
+                                                            variant="dark"
+                                                            className={classes.btn}
+                                                      >
+                                                            Start now
+                                                      </Button>
+                                                </td>
+                                          </tr>
+                                    </table>
+                              </div>
+                        </th>
                   </tr>
-                  <tr>
-                        <th></th>
-                        <th className={'text-center ' + classes.price}>
-                              <h4>{props.packages[0].starter}</h4>
-                              <span>user/month</span>
-                        </th>
-                        <th className={'text-center ' + classes.price}>
-                              <h4>{props.packages[0].premium}</h4>
-                              <span>user/month</span>
-                        </th>
-                        <th className={'text-center ' + classes.price}>
-                              <h4>{props.packages[0].corporate}</h4>
-                              <span>user/month</span>
-                        </th>
-                  </tr>
-                  {props.packages
+                  {/* {props.packages
                         .filter((pack, index) => index !== 0 && pack)
                         .map((pack) => (
                               <tr className={classes.data}>
-                                    <td>{pack.for}</td>
+                                    <td className="d-none d-md-block">{pack.for}</td>
                                     <td className="text-center">
                                           {String(pack.starter).padStart(2, '0') + ' / daily'}
                                     </td>
@@ -40,9 +144,9 @@ const PriceTable = (props) => {
                                           {String(pack.corporate).padStart(2, '0') + ' / daily'}
                                     </td>
                               </tr>
-                        ))}
-                  <tr>
-                        <td></td>
+                        ))} */}
+                  {/* <tr>
+                        <td className="d-none d-md-block"></td>
                         <td className="text-center">
                               <Button variant="dark" className={classes.btn}>
                                     Start now
@@ -58,7 +162,7 @@ const PriceTable = (props) => {
                                     Start now
                               </Button>
                         </td>
-                  </tr>
+                  </tr> */}
             </table>
       );
 };

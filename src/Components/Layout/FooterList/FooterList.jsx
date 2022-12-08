@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import classes from './FooterList.module.css';
 
 const FooterList = (props) => {
@@ -7,9 +8,7 @@ const FooterList = (props) => {
                         {props.list.title}
                   </span>
                   {props.list.links.map((link, ind) => (
-                        <span key={link + ind} className={'text-light mb-2 ' + classes.link}>
-                              {link}
-                        </span>
+                              <Link to={link.redirect} key={link + ind} className={'text-light mb-2 ' + classes.links} >{link.name}</Link>
                   ))}
             </div>
       );

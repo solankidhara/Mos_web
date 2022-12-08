@@ -3,7 +3,7 @@
 }
 
 .tags {
-      max-width: 72%;
+      /* max-width: 72%; */
       margin: 52px auto 40px;
 }
 .tags label {
@@ -13,11 +13,26 @@
 }
 
 .related {
-      max-width: 72%;
+      /* max-width: 72%; */
       margin: 37px auto 40px;
 }
 .related label {
       font-weight: 700;
       font-size: 18px;
       margin-bottom: 28px;
+}
+
+
+@media screen and (max-width: 991px) {
+      .preview {
+            margin-top: 30px;
+      }
+      .tags {
+            max-width: 85%;
+            margin: 52px auto 40px;
+      }
+      .related {
+            max-width: 85%;
+            margin: 37px auto 40px;
+      }
 }

@@ -11,11 +11,13 @@ import social from '../../Components/constance/socialMedia';
 import FooterBar from '../../Components/UI/FooterBar/FooterBar';
 
 import classes from './index.module.css';
+import { Container } from 'react-bootstrap';
 
 const Frame = () => {
       return (
             <div className="g-0 container-fluid">
                   <NavBar menu={links} />
+                  <Container>
                   <div className={classes.preview}>
                         <Preview data={previewDetails} />
                   </div>
@@ -27,6 +29,7 @@ const Frame = () => {
                         <label>Similar Content</label>
                         <SimilarContent content={related} />
                   </div>
+                  </Container>
                   <FooterBar lists={fLinks} social={social} />
             </div>
       );
