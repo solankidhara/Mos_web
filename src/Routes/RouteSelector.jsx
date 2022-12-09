@@ -9,6 +9,8 @@ import Policies from '../Pages/Policies';
 import Search from '../Pages/Search';
 import Pricing from '../Pages/Pricing';
 import Frame from '../Pages/Frame';
+import Admin from '../Admin/Layout';
+import Dashboard from '../Admin/Page/Dashboard';
 
 const IfLogin = () => {
       return <Navigate to={'/'} />;
@@ -28,6 +30,11 @@ function RouteSelector() {
                         <Route path="/search" element={<Search />} />
                         <Route path="/pricing" element={<Pricing />} />
                         <Route path="/frame" element={<Frame />} />
+                        <Route element={<Admin />} >
+                              <Route path='/admin/dashboard' element={<Dashboard />} />
+                              <Route path='/admin/test1' element={<h1>test1</h1>} />
+                              <Route path='/admin/test2' element={<h1>test2</h1>} />
+                        </Route>
                   {/* </Route> */}
                   <Route path="/signin" element={!isLogged ? <SignIn /> : <IfLogin />} />
                   <Route path="/signup" element={!isLogged ? <SignUp /> : <IfLogin />} />
