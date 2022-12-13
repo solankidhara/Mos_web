@@ -3,13 +3,13 @@ import { Outlet } from 'react-router-dom';
 import DashboardHeader from './DashboardHeader';
 
 
-import './layout.css';
+import classes from './layout.module.css';
 import Sidebar from './SideNav';
 
 const Admin = () => {
       return (
             <>
-                  <Row className="g-0 admin_body">
+                  <Row className={"g-0 " + classes.admin_body}>
                         <Col lg={2} md={3}>
                               <Sidebar />
                         </Col>
@@ -19,7 +19,9 @@ const Admin = () => {
                                     uname="Mr. ABCD"
                                     userDp="/images/admin/adminDp.png"
                               />
-                              <Outlet />
+                              <div className={classes.layout_body}>
+                                    <Outlet />
+                              </div>
                         </Col>
                   </Row>
             </>

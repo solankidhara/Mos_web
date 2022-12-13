@@ -11,6 +11,8 @@ import Pricing from '../Pages/Pricing';
 import Frame from '../Pages/Frame';
 import Admin from '../Admin/Layout';
 import Dashboard from '../Admin/Page/Dashboard';
+import CatagoryTable from '../Admin/Page/CategoryTable';
+import ListOfContent from '../Admin/Page/ListOfContent';
 
 const IfLogin = () => {
       return <Navigate to={'/'} />;
@@ -34,6 +36,8 @@ function RouteSelector() {
                               <Route path='/admin/dashboard' element={<Dashboard />} />
                               <Route path='/admin/test1' element={<h1>test1</h1>} />
                               <Route path='/admin/test2' element={<h1>test2</h1>} />
+                              <Route path='/admin/categorytable' element={<CatagoryTable />} />
+                              <Route path='/admin/listofcontent' element={<ListOfContent />} />
                         </Route>
                   {/* </Route> */}
                   <Route path="/signin" element={!isLogged ? <SignIn /> : <IfLogin />} />

@@ -3,7 +3,7 @@ import classes from './OultlineBtn.module.css';
 
 const OutlineBtn = (props) => {
       return (
-            <Button className={classes.outlineBtn + " " + props.className}> {props.icon} {props.text}</Button>
+            <Button className={classes.outlineBtn + " " + props.className} onClick={props.onClick}> {props.icon} {props.text}</Button>
       )
 }
 

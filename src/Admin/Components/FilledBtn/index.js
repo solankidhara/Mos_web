@@ -3,7 +3,7 @@ import classes from './FilledBtn.module.css';
 
 const FilledBtn = (props) => {
       return (
-            <Button className={classes.filledBtn + " " + props.className}> {props.icon} {props.text}</Button>
+            <Button className={classes.filledBtn + " " + props.className}  onClick={props.onClick} > {props.icon} {props.text}</Button>
       )
 }
 

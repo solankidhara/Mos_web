@@ -1,7 +1,9 @@
 import { Form, Tab, Tabs } from 'react-bootstrap';
+import overviewContentData from '../../Constance/overviewContentData';
 import CustomDatepicker from '../../Components/CustomDatepicker';
 import FilledBtn from '../../Components/FilledBtn';
 import OutlineBtn from '../../Components/OutlineBtn';
+import OverviewContent from '../../Components/OverviewContent/index.js';
 import { import_icon, print_icon, share_icon } from '../../Constance/icons';
 
 import classes from './dashboard.module.css';
@@ -37,7 +39,7 @@ const Dashboard = () => {
                               className={'mb-3 mt-4 ' + classes.dashboardTab}
                         >
                               <Tab eventKey="overview" title="Overview">
-                                    OverView
+                                    <OverviewContent data={overviewContentData} />
                               </Tab>
                               <Tab eventKey="audiences" title="Audiences">
                                     Audiences
