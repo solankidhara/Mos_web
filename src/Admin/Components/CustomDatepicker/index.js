@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import DatePicker, { DateObject } from 'react-multi-date-picker';
 import InputIcon from 'react-multi-date-picker/components/input_icon';
 import classes from './customdatepicker.module.css';

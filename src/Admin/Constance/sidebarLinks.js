@@ -1,4 +1,4 @@
-import { bulk_file_icom, catagory_icon, dash_icon, Docs_icon, invoice_anal_icon, invoice_icon, pricing_icons, single_file_icon, tags_icons, tax_detail_icon, users_icon, users_pg_icon } from "./icons";
+import {  catagory_icon, dash_icon, Docs_icon, invoice_anal_icon, invoice_icon, pricing_icons, single_file_icon, tags_icons, tax_detail_icon, users_pg_icon } from "./icons";
 
 const sidebarLinks =[
       {
@@ -34,11 +34,12 @@ const sidebarLinks =[
                         redairect : '/admin/test2'
                   }]
             }
-            ,{
-                  icon : bulk_file_icom,
-                  title : 'Bulk File',
-                  redairect : '/admin/test2'
-            }]
+            // ,{
+            //       icon : bulk_file_icom,
+            //       title : 'Bulk File',
+            //       redairect : '/admin/test2'
+            // }
+      ]
       },
       {
             linksTitle : 'Account',

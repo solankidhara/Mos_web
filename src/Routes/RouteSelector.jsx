@@ -1,7 +1,6 @@
 import HomePage from '../Pages/Index';
 import About from '../Pages/ImagePage';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
 import SignIn from '../Pages/SignIn';
 import SignUp from '../Pages/SignUp';
 import Page3D from '../Pages/3D';

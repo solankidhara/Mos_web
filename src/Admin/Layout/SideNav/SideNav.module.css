@@ -37,59 +37,6 @@
       color: #1e3bb3 !important;
 }
 
-.sidebar_dropdown {
-      background-color: transparent;
-      padding-left: 70px !important;
-      border-radius: 0 30px 30px 0;
-      font-size: 18px !important;
-      line-height: 24px;
-}
-.sidebar_dropdown:global(.show) {
-      background-color: rgba(0, 0, 0, 0.05) !important;
-      color: #1e3bb3 !important;
-}
-.sidebar_dropdown :global(.dropdown-toggle) {
-      color: #1e3bb3 !important;
-      padding-left: 0 !important;
-      font-size: 18px !important;
-      line-height: 24px;
-      display: flex !important;
-      align-items: center;
-      color: #222 !important;
-      background-color: transparent !important;
-      border: none !important;
-      justify-content: space-between;
-      width: 100%;
-}
-.sidebar_dropdown :global(.dropdown-toggle):after {
-      border: none !important;
-      content: '>' !important;
-      font-size: 22px;
-      margin-right: 10px;
-}
-.sidebar_dropdown:global(.show) :global(.dropdown-toggle) {
-      color: #1e3bb3 !important;
-}
-.sidebar_dropdown:global(.show) :global(.dropdown-toggle) svg path {
-      fill: #1e3bb3 !important;
-}
-.sidebar_dropdown:global(.show) .sidebar_link {
-      padding-left: 30px !important;
-}
-.sidebar_dropdown:global(.show) .sidebar_link:global(.active) {
-      background-color: transparent !important;
-      color: #1e3bb3 !important;
-}
-.sidebar_dropdown:after {
-      border: none !important;
-}
-
-.sidebar_dropdown :global(.dropdown-menu) {
-      position: relative !important;
-      border: none !important;
-      background: transparent !important;
-}
-
 @media screen and (max-width: 992px) {
       .sidebar {
             min-height: auto;
@@ -101,8 +48,7 @@
             min-height: auto;
       }
       .body_title,
-      .sidebar_link,
-      .sidebar_dropdown {
+      .sidebar_link{
             padding-left: 30px !important;
       }
 }

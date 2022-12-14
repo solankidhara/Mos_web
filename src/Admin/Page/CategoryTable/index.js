@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
+import { Col, Form, Modal, Row } from 'react-bootstrap';
 import CustomTable from '../../Components/CustomTable';
 import FilledBtn from '../../Components/FilledBtn';
-import OutlineBtn from '../../Components/OutlineBtn';
 import { catagoryTableData, catagoryTableFields } from '../../Constance/catagoryTableData';
 
 const CatagoryTable = () => {

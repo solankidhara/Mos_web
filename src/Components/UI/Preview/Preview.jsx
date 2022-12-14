@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import { Container } from 'react-bootstrap';
 import FileButtons from '../../Layout/FileButtons/FileButtons';
 import FileDescription from '../../Layout/FileDescription/FileDescription';
 import FileInfo from '../../Layout/FileInfo/FileInfo';
