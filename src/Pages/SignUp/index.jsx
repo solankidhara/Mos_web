@@ -1,14 +1,12 @@
-import { useRef } from "react";
 import { Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import PublicCard from "../../Components/Cards/PublicCard";
-import Option from "../../Components/common/SignInOption/Option";
 import SocialLogin from "../../Components/common/SocialLogin";
 import UserButton from "../../Components/common/UserButton/UserButton";
 import UserInput from "../../Components/common/UserInput/UserInput";
 import classes from "./index.module.css";
 
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 
 import Joi from "joi";
@@ -17,7 +15,6 @@ const schema = Joi.object({
   email: Joi.string().min(4).message("4").max(6).message("6").required(),
   password: Joi.string().min(4).message("4").max(6).message("6").required(),
 });
-
 const SignUpPage = () => {
 
 
@@ -26,7 +23,6 @@ const SignUpPage = () => {
   });
 
   const onSubmit = (data) => console.log(data);
-
   return (
     <div className={"container-fluid " + classes.bg}>
       <div className={classes.cardcontainer}>
