@@ -12,16 +12,25 @@ import Admin from '../Admin/Layout';
 import Dashboard from '../Admin/Page/Dashboard';
 import CatagoryTable from '../Admin/Page/CategoryTable';
 import ListOfContent from '../Admin/Page/ListOfContent';
+import PrivateRoute from './PrivateRoute';
 
 const IfLogin = () => {
       return <Navigate to={'/'} />;
 };
 function RouteSelector() {
-      const isLogged = false;
+      const isLogged = true;
 
+      // useEffect(()=>{
+      //       (async() => {  const res = await getRootRoute()
+            
+      //       console.log(res ,"-----------")
+      //       }
+      //       ) ();
+        
+      // },[])
       return (
             <Routes>
-                  {/* <Route element={<PrivateRoute login={isLogged} />}> */}
+                  <Route element={<PrivateRoute login={isLogged} />}>
                         <Route path="/" element={<HomePage />} />
                         {/* <Route path="/home" element={<HomePage />} /> */}
                         <Route path="/video" element={<HomePage />} />
@@ -38,7 +47,7 @@ function RouteSelector() {
                               <Route path='/admin/categorytable' element={<CatagoryTable />} />
                               <Route path='/admin/listofcontent' element={<ListOfContent />} />
                         </Route>
-                  {/* </Route> */}
+                  </Route>
                   <Route path="/signin" element={!isLogged ? <SignIn /> : <IfLogin />} />
                   <Route path="/signup" element={!isLogged ? <SignUp /> : <IfLogin />} />
             </Routes>
