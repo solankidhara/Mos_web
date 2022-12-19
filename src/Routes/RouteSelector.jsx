@@ -1,8 +1,7 @@
-import intercepter from "../utils/intercepter";
+import "../utils/intercepter";
 
-import HomePage from "../Pages/Index";
-import About from "../Pages/ImagePage";
 import { Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "../Pages/Index";
 import SignIn from "../Pages/SignIn";
 import SignUp from "../Pages/SignUp";
 import Page3D from "../Pages/3D";
@@ -14,22 +13,22 @@ import Admin from "../Admin/Layout";
 import Dashboard from "../Admin/Page/Dashboard";
 import CatagoryTable from "../Admin/Page/CategoryTable";
 import ListOfContent from "../Admin/Page/ListOfContent";
-import PrivateRoute from "./PrivateRoute";
+import ImageComponent from "../Pages/ImagePage";
+import { PrivateRoute } from "./PrivateRoute";
 
 const IfLogin = () => {
   return <Navigate to={"/"} />;
 };
 function RouteSelector() {
-  const isLogged = false;
-
+  const isLogged = localStorage.getItem("token") ? true : false;
 
   return (
     <Routes>
-      <Route element={<PrivateRoute login={isLogged} />}>
+      <Route element={<PrivateRoute />}>
         <Route path="/" element={<HomePage />} />
         {/* <Route path="/home" element={<HomePage />} /> */}
         <Route path="/video" element={<HomePage />} />
-        <Route path="/image" element={<About />} />
+        <Route path="/image" element={<ImageComponent />} />
         <Route path="/3d" element={<Page3D />} />
         <Route path="/policies" element={<Policies />} />
         <Route path="/search" element={<Search />} />

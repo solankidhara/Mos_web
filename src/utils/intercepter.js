@@ -1,23 +1,50 @@
 import axios from "axios";
+import { redirect } from "react-router-dom";
 
-axios.interceptors.request.use(function (config) {
-    // Do something before request is sent
-    console.log("api calll")
-    
+axios.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    config.baseURL = "http://localhost:3000/api/v1";
+    if (token) {
+      config.headers["Authorization"] = "Bearer " + token;
+    }
+    config.headers["Content-Type"] = "application/json";
     return config;
-
-  }, function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  });
+  },
+  (error) => {
+    Promise.reject(error);
+  }
+);
 
 // Add a response interceptor
-axios.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
+axios.interceptors.response.use(
+  (response) => {
     return response;
-  }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
+  },
+  function (error) {
+    const originalRequest = error.config;
+
+    if (error.response.status === 401 && originalRequest.url === "http://localhost:3000/api/v1/users/token") {
+      redirect("/login");
+      return Promise.reject(error);
+    }
+
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const refreshToken = localStorage.getItem("token");
+
+      return axios
+        .post("/users/token", {
+          refresh_token: refreshToken,
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            localStorage.setItem("token", res.data);
+            axios.defaults.headers.common["Authorization"] = "Bearer " + localStorage.getItem("token");
+            return axios(originalRequest);
+          }
+        });
+    }
     return Promise.reject(error);
-  });
+  }
+);

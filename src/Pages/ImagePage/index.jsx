@@ -12,7 +12,8 @@ import fLinks from "../../Components/constance/footerList";
 import links from "../../Components/constance/navLinks";
 import social from "../../Components/constance/socialMedia";
 
-const About = () => {
+const ImageComponent = () => {
+ 
   return (
     <div className="g-0 container-fluid">
       <NavBar menu={links} />
@@ -37,4 +38,4 @@ const About = () => {
     </div>
   );
 };
-export default About;
+export default ImageComponent;
