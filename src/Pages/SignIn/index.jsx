@@ -41,14 +41,14 @@ const SignInPage = () => {
         <PublicCard>
           <div className={classes.title}>Sign in</div>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <UserInput type="email" placeholder="Email Address" name="email" bs-class="mt-4" control={control} />
+            <UserInput type="email" placeholder="Email Address" name="email" bs-class="mt-4" control={control} fieldClass={true}/>
             {errors?.email && (
               <Alert className={"p-2 mt-3 ms-4"} style={{ marginRight: "55px" }} variant="danger">
                 {" "}
                 {errors.email?.message}
               </Alert>
             )}
-            <UserInput type="password" placeholder="Passcode" name="password" bs-class="my-4" control={control} />
+            <UserInput type="password" placeholder="Passcode" name="password" bs-class="my-4" control={control} fieldClass={true}/>
             {errors?.password && (
               <Alert className={"p-2 mt-3 ms-4"} style={{ marginRight: "55px" }} variant="danger">
                 {" "}

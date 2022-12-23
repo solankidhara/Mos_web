@@ -2,7 +2,7 @@ import { Form } from "react-bootstrap";
 import { Controller } from "react-hook-form";
 import classes from "./UserInput.module.css";
 
-const UserInput = ({ name, control, type, placeholder, ...props }) => {
+const UserInput = ({ name, control, type, placeholder, fieldClass , onChange,...props }) => {
   return (
     <>
       <Controller
@@ -10,10 +10,9 @@ const UserInput = ({ name, control, type, placeholder, ...props }) => {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <Form.Control
-            className={classes.field + " " + props["bs-class"]}
+            className={`${fieldClass && classes.field} ${props["bs-class"]} ${props.className}`}
             type={type}
             placeholder={placeholder}
-            // name={props.name}
             {...field}
           />
         )}

@@ -29,8 +29,8 @@ const SignUpPage = () => {
         <PublicCard>
           <div className={classes.title}>Sign Up</div>
           <Form onSubmit={handleSubmit(onSubmit)}>
-            <UserInput type="email" placeholder="Email Address" name="email" bs-class="mt-4" control={control} />
-            <UserInput type="password" placeholder="Passcode" name="password" bs-class="my-4" control={control} />
+            <UserInput type="email" placeholder="Email Address" name="email" bs-class="mt-4" control={control} fieldClass={true} />
+            <UserInput type="password" placeholder="Passcode" name="password" bs-class="my-4" control={control} fieldClass={true} />
             <div className={"d-flex flex-wrap align-items-center justify-content-center justify-content-sm-start " + classes.sub}>
               <UserButton type="submit" bs-class="">
                 Sign Up
