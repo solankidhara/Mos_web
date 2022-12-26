@@ -56,7 +56,7 @@ const ListOfContent = () => {
       formData.append("description", content.description);
       formData.append("category_id", content.category.value);
       formData.append("mainFile" ,content.mainFile);
-      formData.append("thumbFile", content?.thumbFile);
+      formData.append("thumbFile", content.thumbFile);
       formData.append("waterMarkFile", content.waterMarkFile);
       const res = await axios.post("admin/add-content", formData, {
         headers: {
