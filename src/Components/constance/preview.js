@@ -1,5 +1,5 @@
 const previewDetails = {
-      url: './images/frame/Preview.png',
+      url: '../images/frame/Preview.png',
       size: '4800 x 6000 pixels',
       extension: 'jpg',
       licence: 'Commercial',

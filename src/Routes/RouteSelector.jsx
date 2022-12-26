@@ -33,7 +33,7 @@ function RouteSelector() {
         <Route path="/policies" element={<Policies />} />
         <Route path="/search" element={<Search />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/frame" element={<Frame />} />
+        <Route path="/frame/:id" element={<Frame />} />
         <Route element={<Admin />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/test1" element={<h1>test1</h1>} />

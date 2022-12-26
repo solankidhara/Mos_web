@@ -4,13 +4,13 @@ import FileDescription from '../../Layout/FileDescription/FileDescription';
 import FileInfo from '../../Layout/FileInfo/FileInfo';
 import classes from './Preview.module.css';
 
-const Preview = (props) => {
+const Preview = ({data , selectedImage}) => {
       return (
             <Fragment>
                   
                         <div className="d-flex flex-column flex-lg-row">
                               <div className={classes.preview_img} >
-                              <img alt="preview" src={props.data.url} />
+                              <img alt="preview" src={selectedImage?.waterMarkFile} className="img-fluid"/>
                               </div>
                               <div
                                     className={
@@ -19,14 +19,14 @@ const Preview = (props) => {
                                     }
                               >
                                     <FileInfo
-                                          size={props.data.size}
-                                          extension={props.data.extension}
-                                          licence={props.data.licence}
+                                          size={data.size}
+                                          extension={data.extension}
+                                          licence={data.licence}
                                     />
                                     <FileButtons />
                               </div>
                         </div>
-                        <FileDescription title="Description" description={props.data.description} />
+                        <FileDescription title="Description" description={data.description} />
                   
             </Fragment>
       );

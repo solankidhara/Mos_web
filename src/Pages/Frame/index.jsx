@@ -12,14 +12,31 @@ import FooterBar from "../../Components/common/FooterBar/FooterBar";
 
 import classes from "./index.module.css";
 import { Container } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
+import { addImages } from "../../Redux/Slice/image-slice";
 
 const Frame = () => {
+  let { id } = useParams();
+  const dispatch = useDispatch();
+  const selectedImage = useSelector((state) => state.images.imgList).find((ele) => ele._id === id);
+  
+  useEffect(() => {
+    if (!selectedImage) {
+      (async () => {
+        const { data } = await axios.get("/users/default-files");
+        dispatch(addImages(data));
+      })();
+    }
+  }, []);
   return (
     <div className="g-0 container-fluid">
       <NavBar menu={links} />
       <Container>
         <div className={classes.preview}>
-          <Preview data={previewDetails} />
+          <Preview data={previewDetails} selectedImage={selectedImage}/>
         </div>
         <div className={classes.tags}>
           <label>Tags</label>
