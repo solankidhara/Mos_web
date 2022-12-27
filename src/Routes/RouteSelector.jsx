@@ -15,6 +15,7 @@ import CatagoryTable from "../Admin/Page/CategoryTable";
 import ListOfContent from "../Admin/Page/ListOfContent";
 import ImageComponent from "../Pages/ImagePage";
 import { PrivateRoute } from "./PrivateRoute";
+import TypeOfContent from "../Admin/Page/TypeOfContent";
 
 const IfLogin = () => {
   return <Navigate to={"/"} />;
@@ -40,6 +41,7 @@ function RouteSelector() {
           <Route path="/admin/test2" element={<h1>test2</h1>} />
           <Route path="/admin/categorytable" element={<CatagoryTable />} />
           <Route path="/admin/listofcontent" element={<ListOfContent />} />
+          <Route path="/admin/typeofcontent" element={<TypeOfContent />} />
         </Route>
       </Route>
       <Route path="/signin" element={!isLogged ? <SignIn /> : <IfLogin />} />

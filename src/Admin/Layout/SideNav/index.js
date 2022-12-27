@@ -28,7 +28,7 @@ const Sidebar = () => {
               <Nav className={"justify-content-end flex-grow-1 pe-3 " + classes.body_nav} defaultActiveKey={location?.pathname}>
                 {sidebarLinks.map((item, index) => (
                   <>
-                    <div key={index}>
+                    <div key={`${item.linksTitle}-${index}`}>
                       {item.linksTitle && <h3 className={classes.body_title}>{item.linksTitle}</h3>}
                       {item.links.map((link) => (
                         <>

@@ -8,10 +8,6 @@ const sidebarLinks =[
                   redairect : '/admin/dashboard'
             },{
                   icon : dash_icon,
-                  title : 'Catogory Table',
-                  redairect : '/admin/categorytable'
-            },{
-                  icon : dash_icon,
                   title : 'List of Content',
                   redairect : '/admin/listofcontent'
             }
@@ -78,15 +74,15 @@ const sidebarLinks =[
             },{
                   icon : catagory_icon,
                   title : 'Category',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/categorytable'
             },{
                   icon : tags_icons,
                   title : 'Tags',
                   redairect : '/admin/dashboard'
             },{
                   icon : tags_icons,
-                  title : 'Content',
-                  redairect : '/admin/dashboard'
+                  title : 'Type Of Content',
+                  redairect : '/admin/typeofcontent'
             }]
       },
       {

@@ -12,6 +12,7 @@ import { catagoryTableData, catagoryTableFields } from "../../Constance/catagory
 const schema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
+  categoryThumbImg:Joi.optional()
 });
 
 const CatagoryTable = () => {
@@ -24,15 +25,25 @@ const CatagoryTable = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     resolver: joiResolver(schema),
   });
 
+  const handleChange = async(e , name) => {
+    setValue(name , e.target.files[0])
+  }
+
   const onSubmit = async (userDetails) => {
     try {
-      const { data } = await axios.post("/admin/category", userDetails);
-      if (data) {
+      const formData = new FormData()
+      formData.append("name", userDetails.name);
+      formData.append("description", userDetails.description);
+      formData.append("categoryThumbImg", userDetails.categoryThumbImg);
+      const response = await axios.post("/admin/add-category", formData ,{headers: {"Content-Type": "multipart/form-data",}});
+      
+      if (response) {
         setShow(false);
       }
     } catch (e) {
@@ -54,7 +65,7 @@ const CatagoryTable = () => {
       <CustomTable fields={catagoryTableFields} data={catagoryTableData} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Insert Data</Modal.Title>
+          <Modal.Title>Add Category</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -71,7 +82,7 @@ const CatagoryTable = () => {
               </Row>
               <Row>
                 <Col>
-                  <Form.Label>Content Name</Form.Label>
+                  <Form.Label>Category Name</Form.Label>
                 </Col>
                 <Col>
                   <UserInput type="text" name="name" control={control} />
@@ -93,6 +104,24 @@ const CatagoryTable = () => {
                 </Col>
                 <Col>
                   <UserInput type="text" name="description" control={control} />
+                </Col>
+                <Col xs={12}>
+                  {errors?.description && (
+                    <Alert variant="danger" className="p-2 my-2">
+                      {" "}
+                      {errors.description?.message}
+                    </Alert>
+                  )}
+                </Col>
+              </Row>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Row>
+                <Col>
+                  <Form.Label>Thumbnail Image</Form.Label>
+                </Col>
+                <Col>
+                  <Form.Control type="file" name="thumbFile"  className="mb-3" onChange={(e)=>{handleChange(e , "categoryThumbImg")}}/>
                 </Col>
                 <Col xs={12}>
                   {errors?.description && (

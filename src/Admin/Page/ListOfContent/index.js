@@ -11,17 +11,6 @@ import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
 import { listOfContetData, listOfContetField } from "../../Constance/listOfContentData";
 
-const contentType = [
-  {
-    value: 1,
-    label: "img",
-  },
-  {
-    value: 2,
-    label: "video",
-  },
-];
-
 const schema = Joi.object({
   name: Joi.string().required(),
   category: Joi.optional(),
@@ -35,6 +24,7 @@ const schema = Joi.object({
 const ListOfContent = () => {
   const [show, setShow] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
+  const [contentType ,setContentType] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -51,7 +41,7 @@ const ListOfContent = () => {
   const onSubmit = async (content) => {
     try {
       const formData = new FormData();
-      formData.append("contentType", content.contentType.label);
+      formData.append("content_type_id", content.contentType.value);
       formData.append("name", content.name);
       formData.append("description", content.description);
       formData.append("category_id", content.category.value);
@@ -76,7 +66,9 @@ const ListOfContent = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/admin/category");
+      const { data } = await axios.get("/users/category");
+      const response = await axios.get("/users/content-type")
+      setContentType(response.data)
       setCategoryList(data);
     })();
   }, [setCategoryList]);
@@ -103,7 +95,7 @@ const ListOfContent = () => {
       <CustomTable fields={listOfContetField} data={listOfContetData} />
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Insert Data</Modal.Title>
+          <Modal.Title>Add Content</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>

@@ -30,14 +30,12 @@ const SidebarDropdown = ({ dropdownData }) => {
       </div>
 
       {activeTab && 
-        dropdownData.items.map((item) => (
-          <>
-            <Link to={item.redairect} className={`${classes.dropdown_item} ${item.redairect ===location.pathname && classes.active}` }>
+        dropdownData.items.map((item , index) => (
+            <Link to={item.redairect} className={`${classes.dropdown_item} ${item.redairect ===location.pathname && classes.active}` } key={`subnav-${index}`}>
               <div className="py-2">
                 {item.icon} {item.title}
               </div>
             </Link>
-          </>
         ))}
 
     </div>
