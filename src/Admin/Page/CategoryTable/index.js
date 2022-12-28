@@ -1,13 +1,13 @@
 import axios from "axios";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import UserInput from "../../../Components/common/UserInput/UserInput";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
-import { catagoryTableData, catagoryTableFields } from "../../Constance/catagoryTableData";
+import {  catagoryTableFields } from "../../Constance/catagoryTableData";
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -18,9 +18,18 @@ const schema = Joi.object({
 const CatagoryTable = () => {
   const [show, setShow] = useState(false);
   const [err, setErr] = useState({});
+  const [categoryList , setCategoryList] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+ 
+  useEffect(()=>{
+    (async()=>{
+          const {data} = await axios.get("/users/category")          
+          setCategoryList(data)
+    })();
+  },[show])
 
   const {
     control,
@@ -56,13 +65,13 @@ const CatagoryTable = () => {
     <>
       <Row className="justify-content-between mb-3">
         <Col md={8}>
-          <h4>List View of Category / Tag / Type_of_Content</h4>
+          <h4>List View of Category / Category</h4>
         </Col>
         <Col className="text-end" md={4}>
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={catagoryTableFields} data={catagoryTableData} />
+      <CustomTable fields={catagoryTableFields} data={categoryList} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Category</Modal.Title>

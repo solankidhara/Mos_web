@@ -25,7 +25,10 @@ const CustomTable = (props) => {
       return (
             <>
                   <BootstrapTable
-                        data={props.data}
+                        data={props.data.map((ele ,index) => {
+                              ele.id=index+1
+                              return ele
+                        })}
                         tableHeaderClass="custom-table-header-container"
                         tableBodyClass="custom-table-body-container"
                         tableContainerClass='custom-table-container'

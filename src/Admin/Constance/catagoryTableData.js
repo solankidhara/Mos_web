@@ -1,45 +1,17 @@
 export const catagoryTableFields = [{
       name : 'id',
       title : 'No',
-      isKey : true,
+      isKey : 'auto',
       dataSort : true,
 },{
-      name : 'category',
-      title : 'Category',
+      name : 'name',
+      title : 'Category Name',
       isKey : false,
       dataSort : true,
 },{
-      name : 'addedDate',
-      title : 'Added Date',
+      name : 'description',
+      title : 'Description',
       isKey : false,
       dataSort : true,
-},{
-      name : 'no_of_content',
-      title : 'No_of_Content',
-      isKey : false,
-      dataSort : false,
 }]
 
-
-
-export const catagoryTableData = [{
-      id : 1,
-      category : 'ABC',
-      addedDate : 'Abc',
-      no_of_content: 20
-},{
-      id : 2,
-      category : 'VFR',
-      addedDate : 'Abc',
-      no_of_content: 20
-},{
-      id : 3,
-      category : 'WER',
-      addedDate : 'Abc',
-      no_of_content: 20
-},{
-      id : 4,
-      category : 'ASD',
-      addedDate : 'Abc',
-      no_of_content: 20
-}]

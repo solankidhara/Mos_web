@@ -1,17 +1,31 @@
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import CategoryImage from '../../Layout/CategoryImage/CategoryImage';
 import classes from './CategoryBrowser.module.css';
 
 const CategoryBrowser = (props) => {
+      
+      const [categories ,setCategories] = useState([])
+ 
+      useEffect(()=>{
+            (async()=>{
+                  const {data} = await axios.get("/users/category")          
+                  setCategories(data)
+            })();
+      },[])
+
+      console.log(categories)
       return (
             <Container className={props['bs-class']}>
                   <span className={'ms-lg-5 ' + classes['trending-title']}>{props.children}</span>
                   <div className="d-flex flex-wrap justify-content-center">
-                        {props.categories.map((cat, index) => (
+                        {categories.map((cat, index) => (
                               <CategoryImage
-                                    key={index + cat.title}
-                                    title={cat.title}
-                                    thumbnail={cat.thumbnail}
+                                    key={cat._id}
+                                    title={cat.name}
+                                    thumbnail={cat.thumbNailImg}
                               />
                         ))}
                   </div>

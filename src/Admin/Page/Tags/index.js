@@ -8,24 +8,24 @@ import UserInput from "../../../Components/common/UserInput/UserInput";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
-import { contentTypeTableField } from "../../Constance/contentTypeTableData";
+import { tagTableField } from "../../Constance/tagTableData";
 
 
 const schema = Joi.object({
-  type: Joi.string().required(),
+  tagName: Joi.string().required(),
 });
 
-const TypeOfContent = () => {
+const Tags = () => {
   const [show, setShow] = useState(false);
-  const [contentType ,setContentType] = useState([])
+  const [tags ,setTags] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get("/admin/content-type")
-      setContentType(response.data)
+      const response = await axios.get("/admin/tag")
+      setTags(response.data)
     })();
   }, [show]);
 
@@ -41,7 +41,7 @@ const TypeOfContent = () => {
   const onSubmit = async (content) => {
     try {
 
-      const res = await axios.post("admin/add-content-type", content);
+      const res = await axios.post("admin/add-tag", content);
         if(res.status === 200){
           setShow(false)          
         }
@@ -54,7 +54,7 @@ const TypeOfContent = () => {
     <>
       <Row className="mb-5">
         <Col>
-          <h4>List View Of Content / Type Of Content</h4>
+          <h4>List View Of Content / Tag</h4>
         </Col>
         <Col className="text-end">
           <div className="d-inline-block me-3">
@@ -69,7 +69,7 @@ const TypeOfContent = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={contentTypeTableField} data={contentType} />
+      <CustomTable fields={tagTableField} data={tags} />
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Content</Modal.Title>
@@ -79,10 +79,10 @@ const TypeOfContent = () => {
             <Form.Group className="mb-3">
               <Row>
                 <Col md={3}>
-                  <Form.Label>Content Type</Form.Label>
+                  <Form.Label>Tag Title</Form.Label>
                 </Col>
                 <Col md={5}>
-                  <UserInput type="text" name="type" control={control} />
+                  <UserInput type="text" name="tagName" control={control} />
                 </Col>
               </Row>
             </Form.Group>
@@ -97,4 +97,4 @@ const TypeOfContent = () => {
   );
 };
 
-export default TypeOfContent;
+export default Tags;

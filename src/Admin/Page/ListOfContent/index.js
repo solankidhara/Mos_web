@@ -9,12 +9,14 @@ import UserInput from "../../../Components/common/UserInput/UserInput";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
-import { listOfContetData, listOfContetField } from "../../Constance/listOfContentData";
+import { listOfContetField } from "../../Constance/listOfContentData";
 
 const schema = Joi.object({
   name: Joi.string().required(),
   category: Joi.optional(),
   contentType: Joi.optional(),
+  tagOne:Joi.optional(),
+  tagTwo:Joi.optional(),
   description: Joi.string().optional(),
   mainFile:Joi.optional(),
   thumbFile:Joi.optional(),
@@ -25,6 +27,8 @@ const ListOfContent = () => {
   const [show, setShow] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
   const [contentType ,setContentType] = useState([])
+  const [contentList ,setContentList] = useState([])
+  const [tagList , setTagList] = useState([])
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -45,6 +49,8 @@ const ListOfContent = () => {
       formData.append("name", content.name);
       formData.append("description", content.description);
       formData.append("category_id", content.category.value);
+      formData.append("tagOne", content.tagOne.value);
+      formData.append("tagTwo", content.tagTwo.value);
       formData.append("mainFile" ,content.mainFile);
       formData.append("thumbFile", content.thumbFile);
       formData.append("waterMarkFile", content.waterMarkFile);
@@ -66,13 +72,17 @@ const ListOfContent = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/users/category");
-      const response = await axios.get("/users/content-type")
+      const { data } = await axios.get("/admin/category");
+      const response = await axios.get("/admin/content-type")
+      const res = await axios.get("/admin/content-list")
+      const tags = await axios.get("/admin/tag")
       setContentType(response.data)
       setCategoryList(data);
+      setContentList(res.data)
+      setTagList(tags.data)
     })();
-  }, [setCategoryList]);
-
+  }, [show]);
+  
   return (
     <>
       <Row className="mb-5">
@@ -92,7 +102,7 @@ const ListOfContent = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={listOfContetField} data={listOfContetData} />
+      <CustomTable fields={listOfContetField} data={contentList} />
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Content</Modal.Title>
@@ -135,12 +145,7 @@ const ListOfContent = () => {
                   <Form.Label>Tag</Form.Label>
                 </Col>
                 <Col md={5}>
-                  <Form.Select aria-label="Default select example">
-                    <option>Select Tag</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </Form.Select>
+                  <Dropdown control={control} name="tagOne" options={tagList} defaultValue={true} />
                 </Col>
               </Row>
             </Form.Group>
@@ -150,12 +155,7 @@ const ListOfContent = () => {
                   <Form.Label>Tag_2</Form.Label>
                 </Col>
                 <Col md={5}>
-                  <Form.Select aria-label="Default select example">
-                    <option>Select Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </Form.Select>
+                  <Dropdown control={control} name="tagTwo" options={tagList} defaultValue={true} />
                 </Col>
               </Row>
             </Form.Group>

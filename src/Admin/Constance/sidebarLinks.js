@@ -78,7 +78,7 @@ const sidebarLinks =[
             },{
                   icon : tags_icons,
                   title : 'Tags',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/tags'
             },{
                   icon : tags_icons,
                   title : 'Type Of Content',

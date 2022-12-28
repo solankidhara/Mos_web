@@ -4,7 +4,7 @@ import NavLogo from '../../Layout/NavLogo/NavLogo';
 
 const NavBar = (props) => {
       return (
-            <Navbar expand="lg">
+            <Navbar expand="lg" className='p-0'>
                   <div className="container-fluid">
                         <NavLogo />
                         <NavLinks menu={props.menu} />
