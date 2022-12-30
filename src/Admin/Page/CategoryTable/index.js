@@ -71,7 +71,7 @@ const CatagoryTable = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={catagoryTableFields} data={categoryList} />
+      <CustomTable  columns={catagoryTableFields} rows={categoryList} dataKey={"_id"}  size={"large"} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Category</Modal.Title>

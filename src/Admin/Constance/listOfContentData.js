@@ -1,22 +1,31 @@
-export const listOfContetField = [{
-      name : 'id',
-      title : 'No',
-      isKey : true,
-      dataSort : true,
-},{
-      name : 'name',
-      title : 'Content Name',
-      isKey : false,
-      dataSort : true,
-},{
-      name : 'categoryName',
-      title : 'Category',
-      isKey : false,
-      dataSort : true,
-},
-{
-      name : 'contentType',
-      title : 'Content Type',
-      isKey : false,
-      dataSort : true,
-}]
+import ListOfContentEditModel from "../Components/BodyTemplate/ListOfContentEditModel";
+
+export const listOfContetField = [
+  {
+    header: "No",
+    body: (_, { rowIndex }) => rowIndex + 1,
+  },
+  {
+    name: "name",
+    field: "name",
+    header: "Content Name",
+    sortable: true,
+  },
+  {
+    name: "categoryName",
+    field: "categoryName",
+    header: "Category",
+    sortable: true,
+  },
+  {
+    name: "contentType",
+    field: "contentType",
+    header: "Content Type",
+    sortable: true,
+  },
+  {
+    header: "Edit",
+    body: ListOfContentEditModel,
+    exportable: true,
+  },
+];

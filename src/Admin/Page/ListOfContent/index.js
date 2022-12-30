@@ -4,8 +4,10 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Dropdown from "../../../Components/common/Dropdown";
 import UserInput from "../../../Components/common/UserInput/UserInput";
+import { addCategories, addContentType, addTags } from "../../../Redux/Slice/category-slice";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
@@ -29,6 +31,8 @@ const ListOfContent = () => {
   const [contentType ,setContentType] = useState([])
   const [contentList ,setContentList] = useState([])
   const [tagList , setTagList] = useState([])
+
+  const dispatch = useDispatch()
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -80,6 +84,9 @@ const ListOfContent = () => {
       setCategoryList(data);
       setContentList(res.data)
       setTagList(tags.data)
+      dispatch(addContentType(response.data))
+      dispatch(addCategories(data))
+      dispatch(addTags(tags.data))
     })();
   }, [show]);
   
@@ -102,7 +109,7 @@ const ListOfContent = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={listOfContetField} data={contentList} />
+      <CustomTable columns={listOfContetField} rows={contentList} dataKey={"_id"}  size={"large"} />
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Content</Modal.Title>

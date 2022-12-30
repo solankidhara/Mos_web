@@ -69,7 +69,7 @@ const TypeOfContent = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={contentTypeTableField} data={contentType} />
+      <CustomTable columns={contentTypeTableField} rows={contentType} dataKey={"_id"}  size={"large"}/>
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Content</Modal.Title>

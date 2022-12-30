@@ -1,17 +1,25 @@
-export const catagoryTableFields = [{
-      name : 'id',
-      title : 'No',
-      isKey : 'auto',
-      dataSort : true,
-},{
-      name : 'name',
-      title : 'Category Name',
-      isKey : false,
-      dataSort : true,
-},{
-      name : 'description',
-      title : 'Description',
-      isKey : false,
-      dataSort : true,
-}]
+import CategoryEditModel from "../Components/BodyTemplate/CategoryEditModel";
 
+export const catagoryTableFields = [
+  {
+    header: "No",
+    body: (_, { rowIndex }) => rowIndex + 1,
+  },
+  {
+    name: "name",
+    field: "name",
+    header: "Category Name",
+    sortable: true,
+  },
+  {
+    name: "description",
+    field: "description",
+    header: "Description",
+    sortable: true,
+  },
+  {
+    header: "Edit",
+    body: CategoryEditModel,
+    exportable: true,
+  },
+];

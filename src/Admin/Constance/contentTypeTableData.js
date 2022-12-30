@@ -1,14 +1,19 @@
+import TypeOfContentModel from "../Components/BodyTemplate/TypeOfContentEditModel";
+
 export const contentTypeTableField = [
   {
-    name: "id",
-    title: "No",
-    isKey: true,
-    dataSort: true,
+    header: "No",
+    body: (_, { rowIndex }) => rowIndex + 1,
   },
   {
     name: "label",
-    title: "Content Type",
-    isKey: false,
-    dataSort: true,
+    field: "label",
+    header: "Content Type",
+    sortable: true,
+  },
+  {
+    header: "Edit",
+    body: TypeOfContentModel ,
+    exportable: true,
   },
 ];

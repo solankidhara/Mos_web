@@ -1,15 +1,19 @@
+import EditTagModel from "../Components/BodyTemplate/EditTagModel";
+
 export const tagTableField = [
-    {
-      name: "id",
-      title: "No",
-      isKey: true,
-      dataSort: true,
-    },
-    {
-      name: "label",
-      title: "Tag Name",
-      isKey: false,
-      dataSort: true,
-    },
-  ];
-  
+  {
+    header: "No",
+    body: (_, { rowIndex }) => rowIndex + 1,
+  },
+  {
+    name: "label",
+    field: "label",
+    header: "Tag Name",
+    sortable: true,
+  },
+  {
+    header: "Edit",
+    body: EditTagModel,
+    exportable: true,
+  },
+];

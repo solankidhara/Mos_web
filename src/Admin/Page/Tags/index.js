@@ -69,7 +69,7 @@ const Tags = () => {
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable fields={tagTableField} data={tags} />
+      <CustomTable columns={tagTableField} rows={tags}  dataKey={"_id"}  size={"large"}/>
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Add Content</Modal.Title>

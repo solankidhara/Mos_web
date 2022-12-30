@@ -1,53 +1,35 @@
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import {BiCaretDown, BiCaretUp} from 'react-icons/bi'
-import './customTable.css';
+import { Card } from "primereact/card";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
 
-const CustomTable = (props) => {
-      
-      const getCaret=(direction)=>{
-            if (direction === 'asc') {
-                  return (
-                    <span> <BiCaretDown /></span>
-                  );
-                }
-                if (direction === 'desc') {
-                  return (
-                    <span> <BiCaretUp /></span>
-                  );
-                }
-                return (
-                  <span> <BiCaretDown /><BiCaretUp /></span>
-                );
-      }
-     
+const MainTable = (props) => {
+  const { columns ,rows,dataKey,  globalFilterFields, header, size, filters, filterDisplay  } = props;
 
-            
-      return (
-            <>
-                  <BootstrapTable
-                        data={props.data.map((ele ,index) => {
-                              ele.id=index+1
-                              return ele
-                        })}
-                        tableHeaderClass="custom-table-header-container"
-                        tableBodyClass="custom-table-body-container"
-                        tableContainerClass='custom-table-container'
-                  >
-                        {props.fields.map((field) => (
-                              <TableHeaderColumn
-                                    className="custom-table-header"
-                                    dataField={field.name}
-                                    isKey={field.isKey}
-                                    key={field.name}
-                                    dataSort={field.dataSort}
-                                    caretRender={field.dataSort && getCaret }
-                              >
-                                    {field.title}
-                              </TableHeaderColumn>
-                        ))}
-                  </BootstrapTable>
-            </>
-      );
+  return (
+    <Card>
+      <DataTable
+        dataKey={dataKey}
+        value={rows}
+        globalFilterFields={globalFilterFields}
+        header={header}
+        size={size}
+        filters={filters}
+        filterDisplay={filterDisplay}
+     >
+        {columns.map((product) => (
+          <Column
+            field={product.field}
+            header={product.header}
+            sortable={product.sortable}
+            key={product.name}
+            filter={product.filter}
+            body={product.body}
+            exportable={product.exportable}
+          ></Column>
+        ))}
+      </DataTable>
+    </Card>
+  );
 };
 
-export default CustomTable;
+export default MainTable;

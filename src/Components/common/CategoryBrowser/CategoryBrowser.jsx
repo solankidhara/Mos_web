@@ -16,7 +16,6 @@ const CategoryBrowser = (props) => {
             })();
       },[])
 
-      console.log(categories)
       return (
             <Container className={props['bs-class']}>
                   <span className={'ms-lg-5 ' + classes['trending-title']}>{props.children}</span>
