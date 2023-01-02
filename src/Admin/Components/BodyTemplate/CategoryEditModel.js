@@ -6,6 +6,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import DiaLogComponent from "../../common/model";
 import CategoryFormUpdate from "../UpdateForm/CategoryUpdateForm";
+import { useDispatch } from "react-redux";
+import { addCategories } from "../../../Redux/Slice/category-slice";
 
 const schema = Joi.object({
     name: Joi.string().optional(),
@@ -15,6 +17,8 @@ const schema = Joi.object({
 const CategoryEditModel = (rowData) => {
   const [visible, setIsVisible] = useState(false);
   
+  const dispatch = useDispatch()
+
   const modelHandler = () => {
     setIsVisible(!visible);
   };
@@ -37,6 +41,8 @@ const CategoryEditModel = (rowData) => {
     if(data.name || data.description){
       const res = await axios.patch("/admin/category", { _id: rowData._id, ...data });
       if (res.status === 200) {
+        const { data } = await axios.get("/users/category");
+        dispatch(addCategories(data));
         onHide();
       }
     }

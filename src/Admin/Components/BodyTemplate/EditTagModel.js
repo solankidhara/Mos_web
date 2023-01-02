@@ -6,6 +6,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import DiaLogComponent from "../../common/model";
 import TagUpdateForm from "../UpdateForm/TagUpdateForm";
+import { addTags } from "../../../Redux/Slice/category-slice";
+import { useDispatch } from "react-redux";
 
 const schema = Joi.object({
   tagName: Joi.string().optional(),
@@ -13,6 +15,8 @@ const schema = Joi.object({
 
 const EditTagModel = (rowData) => {
   const [visible, setIsVisible] = useState(false);
+  
+  const dispatch = useDispatch()
   
   const modelHandler = () => {
     setIsVisible(!visible);
@@ -37,6 +41,8 @@ const EditTagModel = (rowData) => {
     if(data.tagName){
       const res = await axios.patch("/admin/tag", { _id: rowData.value, ...data });
       if (res.status === 200) {
+        const tags = await axios.get("/admin/tag")
+        dispatch(addTags(tags.data))
         onHide();
       }
     }

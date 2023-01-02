@@ -3,7 +3,7 @@ import { Col, Row, Form } from "react-bootstrap";
 import UserInput from "../../../Components/common/UserInput/UserInput";
 
 const TagUpdateForm = ({ rowData, control }) => {
-    console.log(rowData)
+  
   return (
     <>
       <Form>

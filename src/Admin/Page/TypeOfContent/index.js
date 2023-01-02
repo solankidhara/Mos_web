@@ -4,7 +4,9 @@ import Joi from "joi";
 import {  useEffect, useState } from "react";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import UserInput from "../../../Components/common/UserInput/UserInput";
+import { addContentType } from "../../../Redux/Slice/category-slice";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
@@ -17,7 +19,9 @@ const schema = Joi.object({
 
 const TypeOfContent = () => {
   const [show, setShow] = useState(false);
-  const [contentType ,setContentType] = useState([])
+
+  const dispatch = useDispatch()
+  const contentType = useSelector(state => state.categories.contentType)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -25,9 +29,9 @@ const TypeOfContent = () => {
   useEffect(() => {
     (async () => {
       const response = await axios.get("/admin/content-type")
-      setContentType(response.data)
+      dispatch(addContentType(response.data))
     })();
-  }, [show]);
+  }, [show ,dispatch]);
 
 
   const {
@@ -40,7 +44,6 @@ const TypeOfContent = () => {
 
   const onSubmit = async (content) => {
     try {
-
       const res = await axios.post("admin/add-content-type", content);
         if(res.status === 200){
           setShow(false)          

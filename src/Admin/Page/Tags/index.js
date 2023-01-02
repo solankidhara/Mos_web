@@ -4,7 +4,9 @@ import Joi from "joi";
 import {  useEffect, useState } from "react";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import UserInput from "../../../Components/common/UserInput/UserInput";
+import { addTags } from "../../../Redux/Slice/category-slice";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
@@ -17,17 +19,19 @@ const schema = Joi.object({
 
 const Tags = () => {
   const [show, setShow] = useState(false);
-  const [tags ,setTags] = useState([])
+
+  const dispatch = useDispatch()
+  const tags = useSelector(state => state.categories.tags)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     (async () => {
-      const response = await axios.get("/admin/tag")
-      setTags(response.data)
+      const tags = await axios.get("/admin/tag")
+      dispatch(addTags(tags.data))
     })();
-  }, [show]);
+  }, [show ,dispatch]);
 
 
   const {
@@ -40,9 +44,10 @@ const Tags = () => {
 
   const onSubmit = async (content) => {
     try {
-
       const res = await axios.post("admin/add-tag", content);
         if(res.status === 200){
+          const tags = await axios.get("/admin/tag")
+          dispatch(addTags(tags.data))
           setShow(false)          
         }
     } catch (e) {
@@ -54,7 +59,7 @@ const Tags = () => {
     <>
       <Row className="mb-5">
         <Col>
-          <h4>List View Of Content / Tag</h4>
+          <h4>List View Of Tag</h4>
         </Col>
         <Col className="text-end">
           <div className="d-inline-block me-3">

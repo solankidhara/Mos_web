@@ -6,6 +6,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import DiaLogComponent from "../../common/model";
 import ContentTypeUpdateForm from "../UpdateForm/ContentTypeUpdateForm";
+import { useDispatch } from "react-redux";
+import { addContentType } from "../../../Redux/Slice/category-slice";
 
 const schema = Joi.object({
     type: Joi.string().optional(),
@@ -14,6 +16,8 @@ const schema = Joi.object({
 const TypeOfContentModel = (rowData) => {
   const [visible, setIsVisible] = useState(false);
   
+  const dispatch = useDispatch()
+
   const modelHandler = () => {
     setIsVisible(!visible);
   };
@@ -33,8 +37,14 @@ const TypeOfContentModel = (rowData) => {
   
   
   const onSubmit = async (data) => {
-    console.log("🚀 ~ file: CategoryEditModel.js:16 ~ CategoryEditModel ~ rowData", rowData , )
-    
+    if(data.type){
+      const res = await axios.patch("/admin/content-type", { _id: rowData.value, ...data });
+      if (res.status === 200) {
+        const response = await axios.get("/admin/content-type")
+        dispatch(addContentType(response.data))
+        onHide();
+      }
+    }
     };
  
     const renderFooter = () => {

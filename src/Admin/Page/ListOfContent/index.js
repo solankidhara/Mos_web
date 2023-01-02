@@ -4,10 +4,10 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Col, Form, Modal, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Dropdown from "../../../Components/common/Dropdown";
 import UserInput from "../../../Components/common/UserInput/UserInput";
-import { addCategories, addContentType, addTags } from "../../../Redux/Slice/category-slice";
+import { addCategories, addContent, addContentType, addTags } from "../../../Redux/Slice/category-slice";
 import CustomDatepicker from "../../Components/CustomDatepicker";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
@@ -27,12 +27,12 @@ const schema = Joi.object({
 
 const ListOfContent = () => {
   const [show, setShow] = useState(false);
-  const [categoryList, setCategoryList] = useState([]);
-  const [contentType ,setContentType] = useState([])
-  const [contentList ,setContentList] = useState([])
-  const [tagList , setTagList] = useState([])
 
   const dispatch = useDispatch()
+  const categoryList = useSelector(state => state.categories.category)
+  const contentType = useSelector(state => state.categories.contentType)
+  const contentList = useSelector(state => state.categories.content)
+  const tagList = useSelector(state => state.categories.tags)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -80,15 +80,12 @@ const ListOfContent = () => {
       const response = await axios.get("/admin/content-type")
       const res = await axios.get("/admin/content-list")
       const tags = await axios.get("/admin/tag")
-      setContentType(response.data)
-      setCategoryList(data);
-      setContentList(res.data)
-      setTagList(tags.data)
       dispatch(addContentType(response.data))
       dispatch(addCategories(data))
       dispatch(addTags(tags.data))
+      dispatch(addContent(res.data))
     })();
-  }, [show]);
+  }, [show ,dispatch]);
   
   return (
     <>

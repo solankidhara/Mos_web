@@ -7,29 +7,32 @@ import { useForm } from "react-hook-form";
 import UserInput from "../../../Components/common/UserInput/UserInput";
 import CustomTable from "../../Components/CustomTable";
 import FilledBtn from "../../Components/FilledBtn";
-import {  catagoryTableFields } from "../../Constance/catagoryTableData";
+import { catagoryTableFields } from "../../Constance/catagoryTableData";
+import { useDispatch, useSelector } from "react-redux";
+import { addCategories } from "../../../Redux/Slice/category-slice";
 
 const schema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
-  categoryThumbImg:Joi.optional()
+  categoryThumbImg: Joi.optional(),
 });
 
 const CatagoryTable = () => {
   const [show, setShow] = useState(false);
   const [err, setErr] = useState({});
-  const [categoryList , setCategoryList] = useState([])
+
+  const dispatch = useDispatch()
+  const categoryList = useSelector(state => state.categories.category)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
- 
-  useEffect(()=>{
-    (async()=>{
-          const {data} = await axios.get("/users/category")          
-          setCategoryList(data)
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.get("/users/category");
+      dispatch(addCategories(data));
     })();
-  },[show])
+  }, [show ,dispatch]);
 
   const {
     control,
@@ -40,18 +43,18 @@ const CatagoryTable = () => {
     resolver: joiResolver(schema),
   });
 
-  const handleChange = async(e , name) => {
-    setValue(name , e.target.files[0])
-  }
+  const handleChange = async (e, name) => {
+    setValue(name, e.target.files[0]);
+  };
 
   const onSubmit = async (userDetails) => {
     try {
-      const formData = new FormData()
+      const formData = new FormData();
       formData.append("name", userDetails.name);
       formData.append("description", userDetails.description);
       formData.append("categoryThumbImg", userDetails.categoryThumbImg);
-      const response = await axios.post("/admin/add-category", formData ,{headers: {"Content-Type": "multipart/form-data",}});
-      
+      const response = await axios.post("/admin/add-category", formData, { headers: { "Content-Type": "multipart/form-data" } });
+
       if (response) {
         setShow(false);
       }
@@ -65,13 +68,13 @@ const CatagoryTable = () => {
     <>
       <Row className="justify-content-between mb-3">
         <Col md={8}>
-          <h4>List View of Category / Category</h4>
+          <h4>List View of Category</h4>
         </Col>
         <Col className="text-end" md={4}>
           <FilledBtn text="Add Data" onClick={handleShow} />
         </Col>
       </Row>
-      <CustomTable  columns={catagoryTableFields} rows={categoryList} dataKey={"_id"}  size={"large"} />
+      <CustomTable columns={catagoryTableFields} rows={categoryList} dataKey={"_id"} size={"large"} />
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Category</Modal.Title>
@@ -130,7 +133,14 @@ const CatagoryTable = () => {
                   <Form.Label>Thumbnail Image</Form.Label>
                 </Col>
                 <Col>
-                  <Form.Control type="file" name="thumbFile"  className="mb-3" onChange={(e)=>{handleChange(e , "categoryThumbImg")}}/>
+                  <Form.Control
+                    type="file"
+                    name="thumbFile"
+                    className="mb-3"
+                    onChange={(e) => {
+                      handleChange(e, "categoryThumbImg");
+                    }}
+                  />
                 </Col>
                 <Col xs={12}>
                   {errors?.description && (

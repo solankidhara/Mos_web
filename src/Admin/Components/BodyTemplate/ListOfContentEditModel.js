@@ -6,6 +6,8 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm } from "react-hook-form";
 import DiaLogComponent from "../../common/model";
 import ContentFormUpdate from "../UpdateForm/ContentUpdateForm";
+import { addCategories, addContent, addContentType, addTags } from "../../../Redux/Slice/category-slice";
+import { useDispatch } from "react-redux";
 
 const schema = Joi.object({
     name: Joi.string().optional(),
@@ -21,6 +23,8 @@ const schema = Joi.object({
 
 const ListOfContentEditModel = (rowData) => {
     const [visible, setIsVisible] = useState(false);
+
+    const dispatch = useDispatch()
 
     const modelHanndler = () => {
       setIsVisible(!visible);
@@ -42,6 +46,14 @@ const ListOfContentEditModel = (rowData) => {
     const onSubmit = async (content) => {
       const res = await axios.patch("/admin/content", { _id: rowData._id, ...content });
       if (res.status === 200) {
+        const { data } = await axios.get("/admin/category");
+        const response = await axios.get("/admin/content-type")
+        const res = await axios.get("/admin/content-list")
+        const tags = await axios.get("/admin/tag")
+        dispatch(addContentType(response.data))
+        dispatch(addCategories(data))
+        dispatch(addTags(tags.data))
+        dispatch(addContent(res.data))
         onHide();
       }
     };

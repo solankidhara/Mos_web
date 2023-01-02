@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const categorySlice = createSlice({
   name: "categories",
   initialState: {
+    content:[],
     contentType: [],
     category: [],
     tags: [],
@@ -18,10 +19,13 @@ export const categorySlice = createSlice({
     addTags: (state, actions) => {
       state.tags = actions.payload;
     },
+    addContent :(state, actions) => {
+      state.content = actions.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addContentType,addCategories ,addTags} = categorySlice.actions;
+export const { addContentType,addCategories ,addTags ,addContent} = categorySlice.actions;
 
 export default categorySlice.reducer;
