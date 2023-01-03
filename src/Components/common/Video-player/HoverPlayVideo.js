@@ -2,18 +2,22 @@ import React from "react";
 
 import HoverVideoPlayer from "react-hover-video-player";
 
-const HoverPlayVideo = () => {
+const HoverPlayVideo = ({src}) => {
   return (
-    <>
       <HoverVideoPlayer
-        videoSrc="http://localhost:3000/video/japan.mp4"
+        videoSrc={src}
+        style={{
+          // height:"140.63px",
+          // width:"100%",
+          objectFit:"cover"
+        }}
         loadingOverlay={
           <div className="loading-overlay">
             <div className="loading-spinner" />
           </div>
         }
       />
-    </>
+    
   );
 };
 

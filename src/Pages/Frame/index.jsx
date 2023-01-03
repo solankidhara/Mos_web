@@ -26,7 +26,7 @@ const Frame = () => {
   useEffect(() => {
     if (!selectedImage) {
       (async () => {
-        const { data } = await axios.get("/users/default-files");
+        const { data } = await axios.post("/users/default-files",{tag:"",contentType:""});
         dispatch(addImages(data));
       })();
     }

@@ -1,7 +1,7 @@
 .thumbnail {
       max-width: fit-content;
       max-height: fit-content;
-
+      cursor: pointer;
       margin: 35px;
 }
 

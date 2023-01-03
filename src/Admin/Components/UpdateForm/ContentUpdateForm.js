@@ -82,13 +82,13 @@ const ContentFormUpdate = ({ rowData, control }) => {
             </Col>
             <Col xs={6} lg={4}>
               <div className="d-flex flex-column align-items-center">
-                <Form.Label>Thumbnail Image</Form.Label>
+                <Form.Label>Thumbnail File</Form.Label>
                 <img src={rowData.thumbFile} width="150px" height="150px" />
               </div>
             </Col>
             <Col xs={6} lg={4}>
               <div className="d-flex flex-column align-items-center">
-                <Form.Label>Thumbnail Image</Form.Label>
+                <Form.Label>Watermark File</Form.Label>
                 <img src={rowData.waterMarkFile} width="150px" height="150px" />
               </div>
             </Col>

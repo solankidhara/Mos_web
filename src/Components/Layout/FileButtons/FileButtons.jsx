@@ -9,7 +9,7 @@ const FileButtons = () => {
       const handleDownload = async (e) => {
         try {
           const { data } = await axios.get(`/users/main-file/${id}`);
-          saveAs(data?.mainFile, 'image.jpg')
+          saveAs(data?.mainFile)
         } catch (e) {
           console.log(e);
         }

@@ -13,18 +13,22 @@ import SearchResultsDisplay from "../../Components/common/SearchResultsDisplay/S
 import classes from "./index.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addImages } from "../../Redux/Slice/image-slice";
+import { useParams } from "react-router-dom";
 
 const Search = () => {
   const dispatch = useDispatch(); 
+  const {dd , tag} =useParams()
   
   const searchResult = useSelector((state) => state.images.imgList);
-  
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("/users/default-files");
+      const { data } = await axios.post("/users/default-files" ,{
+        tag:tag ?tag:"",
+        contentType:dd? dd:""
+      });
       dispatch(addImages(data));
     })();
-  }, []);
+  }, [dd ,tag]);
 
   return (
     <div className="g-0 container-fluid">

@@ -28,12 +28,13 @@ function RouteSelector() {
     <Routes>
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/home" element={<HomePage />} /> */}
         <Route path="/video" element={<HomePage />} />
         <Route path="/image" element={<ImageComponent />} />
         <Route path="/3d" element={<Page3D />} />
         <Route path="/policies" element={<Policies />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/:dd/search/:tag" element={<Search />} />
+        <Route path="/:dd/search/" element={<Search />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/frame/:id" element={<Frame />} />
         <Route element={<Admin />}>
