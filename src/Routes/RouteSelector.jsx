@@ -17,6 +17,7 @@ import ImageComponent from "../Pages/ImagePage";
 import { PrivateRoute } from "./PrivateRoute";
 import TypeOfContent from "../Admin/Page/TypeOfContent";
 import Tags from "../Admin/Page/Tags";
+import UserTable from "../Admin/Page/UserTable";
 
 const IfLogin = () => {
   return <Navigate to={"/"} />;
@@ -39,7 +40,7 @@ function RouteSelector() {
         <Route path="/frame/:id" element={<Frame />} />
         <Route element={<Admin />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/test1" element={<h1>test1</h1>} />
+          <Route path="/admin/user" element={<UserTable />} />
           <Route path="/admin/test2" element={<h1>test2</h1>} />
           <Route path="/admin/categorytable" element={<CatagoryTable />} />
           <Route path="/admin/listofcontent" element={<ListOfContent />} />

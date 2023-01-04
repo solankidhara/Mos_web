@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import { Container } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Alert, Container } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
 import badges from "../../constance/search-badges";
 import BadgeList from "../Badges/BadgeList";
 import Paging from "../Paging/Paging";
@@ -8,6 +8,8 @@ import HoverPlayVideo from "../Video-player/HoverPlayVideo";
 import classes from "./SearchResultsDisplay.module.css";
 
 const SearchResultsDisplay = ({ thumbImages }) => {
+  const {dd , tag} =useParams()
+
   const handleGetBadge = (badgeName) => {};
 
   const navigate = useNavigate();
@@ -36,6 +38,9 @@ const SearchResultsDisplay = ({ thumbImages }) => {
             );
           }
         })}
+        {!thumbImages.length && <Alert variant="primary">
+          The content type {dd} and search keyword {tag} could not be found. 
+        </Alert>}
       </div>
       <Paging total={25} />
     </Fragment>

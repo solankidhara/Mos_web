@@ -1,9 +1,20 @@
+import axios from 'axios';
 import { Fragment } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './NavLinks.module.css';
 
 const NavLinks = (props) => {
+      
+      const navigate = useNavigate()
+      
+      const logoutHandler = async() => {
+        const {data} = await axios.post('users/logout')
+            if(data){
+                  localStorage.removeItem("token")
+                  navigate("/signin")
+            }
+      }
       return (
             <Fragment>
                   <Navbar.Toggle aria-controls="nav-bar" />
@@ -17,8 +28,7 @@ const NavLinks = (props) => {
                                     ))}
                               </div>
                               <div className={'d-lg-flex ' + classes.authBtn}>
-                                    <Link to="/signup">Sign Up</Link>
-                                    <Link to="/signin">Log In</Link>
+                                    <Link to="/" onClick={logoutHandler}>Log out</Link>
                               </div>
                         </Nav>
                   </Navbar.Collapse>

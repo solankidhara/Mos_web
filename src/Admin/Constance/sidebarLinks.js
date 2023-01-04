@@ -62,7 +62,7 @@ const sidebarLinks =[
             links : [{
                   icon : users_pg_icon,
                   title : 'User Pages',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/user'
             }]
       },
       {
