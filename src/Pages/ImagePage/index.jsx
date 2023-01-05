@@ -27,7 +27,7 @@ const ImageComponent = () => {
         options={links}
       />
       <CategoryBrowser bs-class="mt-5" categories={trendingVideo}>
-        Browse trending video category
+        <h2 className="text-center">Browse trending image category</h2>
       </CategoryBrowser>
       <Photos badges={badges} images={trendingPhotos} />
       <CategoryBrowser bs-class="mt-5" categories={royaltyFreeImage}>

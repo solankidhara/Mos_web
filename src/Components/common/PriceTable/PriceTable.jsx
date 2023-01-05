@@ -1,7 +1,19 @@
+import { useState } from 'react';
 import { Button } from 'react-bootstrap';
+import DiaLogComponent from '../../../Admin/common/model';
 import classes from './PriceTable.module.css';
 
 const PriceTable = (props) => {
+      const [visible, setIsVisible] = useState(false);
+
+      const modelHandler = () => {
+        setIsVisible(!visible);
+      };
+    
+      const onHide = () => {
+          setIsVisible(false);
+        };
+      
       return (
             <table className={'table ' + classes.tbl}>
                   <tr>
@@ -48,6 +60,7 @@ const PriceTable = (props) => {
                                                       <Button
                                                             variant="dark"
                                                             className={classes.btn}
+                                                            onClick={modelHandler}            
                                                       >
                                                             Start now
                                                       </Button>
@@ -84,6 +97,7 @@ const PriceTable = (props) => {
                                                       <Button
                                                             variant="dark"
                                                             className={classes.btn}
+                                                            onClick={modelHandler}            
                                                       >
                                                             Start now
                                                       </Button>
@@ -120,6 +134,7 @@ const PriceTable = (props) => {
                                                       <Button
                                                             variant="dark"
                                                             className={classes.btn}
+                                                            onClick={modelHandler}            
                                                       >
                                                             Start now
                                                       </Button>
@@ -129,40 +144,14 @@ const PriceTable = (props) => {
                               </div>
                         </th>
                   </tr>
-                  {/* {props.packages
-                        .filter((pack, index) => index !== 0 && pack)
-                        .map((pack) => (
-                              <tr className={classes.data}>
-                                    <td className="d-none d-md-block">{pack.for}</td>
-                                    <td className="text-center">
-                                          {String(pack.starter).padStart(2, '0') + ' / daily'}
-                                    </td>
-                                    <td className="text-center">
-                                          {String(pack.premium).padStart(2, '0') + ' / daily'}
-                                    </td>
-                                    <td className="text-center">
-                                          {String(pack.corporate).padStart(2, '0') + ' / daily'}
-                                    </td>
-                              </tr>
-                        ))} */}
-                  {/* <tr>
-                        <td className="d-none d-md-block"></td>
-                        <td className="text-center">
-                              <Button variant="dark" className={classes.btn}>
-                                    Start now
-                              </Button>
-                        </td>
-                        <td className="text-center">
-                              <Button variant="dark" className={classes.btn}>
-                                    Start now
-                              </Button>
-                        </td>
-                        <td className="text-center">
-                              <Button variant="dark" className={classes.btn}>
-                                    Start now
-                              </Button>
-                        </td>
-                  </tr> */}
+                  <DiaLogComponent
+                        isVisible={visible}
+                        header="Warning"
+                        onHide={onHide}
+                        style={{ height: "100%" }}
+                  >
+                        <p>You are currently in protected mode please contact administrator</p>
+                  </DiaLogComponent>
             </table>
       );
 };

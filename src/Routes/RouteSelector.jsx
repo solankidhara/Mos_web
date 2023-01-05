@@ -41,7 +41,14 @@ function RouteSelector() {
         <Route element={<Admin />}>
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/admin/user" element={<UserTable />} />
+          <Route path="/admin/test1" element={<h1>test1</h1>} />
           <Route path="/admin/test2" element={<h1>test2</h1>} />
+          <Route path="/admin/invoices" element={<h1>Invoices</h1>} />
+          <Route path="/admin/users" element={<h1>Users</h1>} />
+          <Route path="/admin/tax-details" element={<h1>Tax Details</h1>} />
+          <Route path="/admin/invoice-anal" element={<h1>Invoice Anal..</h1>} />
+          <Route path="/admin/pricing" element={<h1>Pricing</h1>} />
+          <Route path="/admin/documentation" element={<h1>Documentation</h1>} />
           <Route path="/admin/categorytable" element={<CatagoryTable />} />
           <Route path="/admin/listofcontent" element={<ListOfContent />} />
           <Route path="/admin/typeofcontent" element={<TypeOfContent />} />

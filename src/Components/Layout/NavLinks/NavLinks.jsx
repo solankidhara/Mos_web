@@ -12,7 +12,7 @@ const NavLinks = (props) => {
         const {data} = await axios.post('users/logout')
             if(data){
                   localStorage.removeItem("token")
-                  navigate("/signin")
+                  return navigate("/signin")
             }
       }
       return (

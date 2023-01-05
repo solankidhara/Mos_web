@@ -42,19 +42,19 @@ const sidebarLinks =[
             links : [{
                   icon : invoice_icon,
                   title : 'Invoices',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/invoices'
             },{
                   icon : users_pg_icon,
                   title : 'Users',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/users'
             },{
                   icon : tax_detail_icon,
                   title : 'Tax Details',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/tax-details'
             },{
                   icon : invoice_anal_icon,
                   title : 'Invoice Anal..',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/invoice-anal'
             }]
       },
       {
@@ -70,7 +70,7 @@ const sidebarLinks =[
             links : [{
                   icon : pricing_icons,
                   title : 'Pricing',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/pricing'
             },{
                   icon : catagory_icon,
                   title : 'Category',
@@ -90,7 +90,7 @@ const sidebarLinks =[
             links : [{
                   icon : Docs_icon,
                   title : 'Documentation',
-                  redairect : '/admin/dashboard'
+                  redairect : '/admin/documentation'
             }]
       }
 ];

@@ -12,18 +12,19 @@ const FooterBar = (props) => {
                   ))}
                   <div
                         className={
-                              'flex-md-column align-items-center ' +
                               classes.buttons
                         }
                   >
-                        <div className={classes.icons}>
+                        <div className='d-flex '>
                               {props.social.map((sm, index) => (
-                                    <IconButton key={sm + index} type="button"></IconButton>
+                                    <div key={index} className={classes.icon}>
+                                          <img src={sm} width="30px" height="30px"/>
+                                    </div>                          
                               ))}
                         </div>
-                        <select defaultValue="language">
+                        {/* <select defaultValue="language">
                               <option value="language">Language</option>
-                        </select>
+                        </select> */}
                   </div>
             </div>
       );

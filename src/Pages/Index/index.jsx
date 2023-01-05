@@ -2,7 +2,6 @@ import PromoCard from "../../Components/Cards/PromoCard";
 import NavBar from "../../Components/common/NavBar/NavBar";
 import PromoContent from "../../Components/common/PromoContent/PromoContent";
 import SearchMenu from "../../Components/common/SearchSec/Search";
-import IndexFooter from "../../Components/common/IndexFooter/IndexFooter";
 import links from "../../Components/constance/navLinks";
 import fLinks from "../../Components/constance/footerList";
 import social from "../../Components/constance/socialMedia";
@@ -68,7 +67,9 @@ const HomePage = () => {
         <PromoContent text="Get Your Free Videos Footage and Images" btn-text="Join Now" index />
       </PromoCard>
       {/* <HighlightImages hilights={hilights} bs-class="my-4" /> */}
-      <VideoCategory >Browse trending video category</VideoCategory>  
+      <VideoCategory >
+        <h2 className="text-center">Browse trending video category</h2>
+        </VideoCategory>  
       <Photos badges={badges} images={trendingPhotos} />
       
       {/* <IndexFooter imgPath="./images/IndexFooter.png" title="Discover royalty free video footage, images, vector and illustration">
