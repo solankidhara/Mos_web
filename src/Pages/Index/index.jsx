@@ -13,9 +13,27 @@ import FooterBar from "../../Components/common/FooterBar/FooterBar";
 import Photos from "../../Components/common/Photos/Photos";
 import badges from "../../Components/constance/search-badges";
 import trendingPhotos from "../../Components/constance/trending-photos";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { addImages } from "../../Redux/Slice/image-slice";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const playerReference = useRef(null);
+
+  const dispatch = useDispatch()
+
+  const trendingVideos = useSelector((state) => state.images.imgList);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.post("/users/default-files" ,{
+        tag:"",
+        contentType:"video"
+      });
+      dispatch(addImages(data));
+    })();
+  }, []);
 
   const videoJsOptions = {
     autoplay: true,
@@ -70,7 +88,7 @@ const HomePage = () => {
       <VideoCategory >
         <h2 className="text-center">Browse trending video category</h2>
         </VideoCategory>  
-      <Photos badges={badges} images={trendingPhotos} />
+        <Photos badges={badges} videos={trendingVideos} title="Trending Videos"/>
       
       {/* <IndexFooter imgPath="./images/IndexFooter.png" title="Discover royalty free video footage, images, vector and illustration">
         Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text Sample text

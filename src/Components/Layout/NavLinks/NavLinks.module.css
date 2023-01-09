@@ -1,17 +1,18 @@
 .links a {
       font-weight: 700;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 22px;
       color: #4f4f4f !important;
       text-decoration: none;
 
-      padding: 0 1.318vw !important;
+      padding: 0 0.818vw !important;
+
 }
 
 .authBtn a {
       display: block;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 15px;
       line-height: 22px;
       color: black;
       text-decoration: none;

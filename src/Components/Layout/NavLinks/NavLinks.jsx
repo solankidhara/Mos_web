@@ -1,11 +1,23 @@
 import axios from 'axios';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import DiaLogComponent from '../../../Admin/common/model';
 import classes from './NavLinks.module.css';
 
 const NavLinks = (props) => {
-      
+      const [visible, setIsVisible] = useState(false);
+
+      const modelHandler = () => {
+        setIsVisible(!visible);
+      };
+    
+      const onHide = () => {
+          setIsVisible(false);
+        };
+    
+
+
       const navigate = useNavigate()
       
       const logoutHandler = async() => {
@@ -22,7 +34,7 @@ const NavLinks = (props) => {
                         <Nav className="w-100 d-lg-flex text-center justify-content-between align-items-center">
                               <div className={'d-lg-flex ' + classes.links}>
                                     {props.menu.map((link, index) => (
-                                          <Link to={link.url} key={index}>
+                                          <Link to={link.url} key={index} onClick={link.url==="#" && modelHandler}>
                                                 {link.name}
                                           </Link>
                                     ))}
@@ -32,6 +44,14 @@ const NavLinks = (props) => {
                               </div>
                         </Nav>
                   </Navbar.Collapse>
+                  <DiaLogComponent
+                    isVisible={visible}
+                    header="Warning"
+                        onHide={onHide}
+                        style={{ height: "100%" }}
+                  >
+                       <p>You are currently in protected mode please contact administrator</p>
+                  </DiaLogComponent>
             </Fragment>
       );
 };

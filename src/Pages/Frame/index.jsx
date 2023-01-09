@@ -22,6 +22,7 @@ const Frame = () => {
   let { id } = useParams();
   const dispatch = useDispatch();
   const selectedImage = useSelector((state) => state.images.imgList).find((ele) => ele._id === id);
+  const shortListedImage = useSelector((state) => state.images.imgList).filter((ele) => ele._id !== id && (selectedImage?.tag_one_id?.tagName=== ele?.tag_one_id?.tagName || selectedImage?.two_id?.tagName=== ele?.tag_two_id?.tagName))
   
   useEffect(() => {
     if (!selectedImage) {
@@ -31,6 +32,7 @@ const Frame = () => {
       })();
     }
   }, []);
+  
   return (
     <div className="g-0 container-fluid">
       <NavBar menu={links} />
@@ -44,7 +46,7 @@ const Frame = () => {
         </div>
         <div className={classes.related}>
           <label>Similar Content</label>
-          <SimilarContent content={related} />
+          <SimilarContent content={shortListedImage} />
         </div>
       </Container>
       <FooterBar lists={fLinks} social={social} />

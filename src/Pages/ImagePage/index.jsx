@@ -4,16 +4,34 @@ import CategoryBrowser from "../../Components/common/CategoryBrowser/CategoryBro
 import NavBar from "../../Components/common/NavBar/NavBar";
 import SearchMenu from "../../Components/common/SearchSec/Search";
 import Photos from "../../Components/common/Photos/Photos";
-import trendingPhotos from "../../Components/constance/trending-photos";
+// import trendingPhotos from "../../Components/constance/trending-photos";
 import royaltyFreeImage from "../../Components/constance/royaltyFreeImage";
 import PlanPrompt from "../../Components/common/Plans/PlansPrompt";
 import FooterBar from "../../Components/common/FooterBar/FooterBar";
 import fLinks from "../../Components/constance/footerList";
 import links from "../../Components/constance/navLinks";
 import social from "../../Components/constance/socialMedia";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { addImages } from "../../Redux/Slice/image-slice";
+import { useEffect } from "react";
 
 const ImageComponent = () => {
  
+  const dispatch = useDispatch()
+
+  const trendingPhotos = useSelector((state) => state.images.imgList);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.post("/users/default-files" ,{
+        tag:"",
+        contentType:"image"
+      });
+      dispatch(addImages(data));
+    })();
+  }, []);
+
   return (
     <div className="g-0 container-fluid">
       <NavBar menu={links} />
@@ -29,7 +47,7 @@ const ImageComponent = () => {
       <CategoryBrowser bs-class="mt-5" categories={trendingVideo}>
         <h2 className="text-center">Browse trending image category</h2>
       </CategoryBrowser>
-      <Photos badges={badges} images={trendingPhotos} />
+      <Photos badges={badges} images={trendingPhotos} title="Trending Photos"/>
       <CategoryBrowser bs-class="mt-5" categories={royaltyFreeImage}>
         Search Royalty free image category
       </CategoryBrowser>
@@ -39,3 +57,4 @@ const ImageComponent = () => {
   );
 };
 export default ImageComponent;
+  
