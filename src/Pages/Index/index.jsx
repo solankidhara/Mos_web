@@ -46,7 +46,7 @@ const HomePage = () => {
     },
     sources: [
       {
-        src: "https://mos-project-374210.el.r.appspot.com/video/japan.mp4",
+        src: "https://34.100.153.160:3000/video/japan.mp4",
         type: "video/mp4",
       },
     ],
