@@ -46,7 +46,7 @@ const HomePage = () => {
     },
     sources: [
       {
-        src: "https://34.100.153.160:3000/video/japan.mp4",
+        src: "http://0.0.0.0:3001/video/japan.mp4",
         type: "video/mp4",
       },
     ],
