@@ -4,7 +4,7 @@ import axios from "axios";
 // const browserAxios = createAxios();
 
 export const getRootRoute =() => {
-  return  axios.get( 'https://34.100.153.160:3000/api/v1/users');
+  return  axios.get( 'https://demoproject-374505.el.r.appspot.com/api/v1/users');
 };
 
 // export const getUsers = (axios = browserAxios) => {
