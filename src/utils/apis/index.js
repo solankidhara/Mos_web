@@ -4,7 +4,7 @@ import axios from "axios";
 // const browserAxios = createAxios();
 
 export const getRootRoute =() => {
-  return  axios.get( 'http://0.0.0.0:3000/api/v1/users');
+  return  axios.get( 'http://localhost:3000/api/v1/users');
 };
 
 // export const getUsers = (axios = browserAxios) => {
